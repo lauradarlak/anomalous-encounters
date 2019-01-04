@@ -1,0 +1,2 @@
+class Encountertag < ApplicationRecord
+end

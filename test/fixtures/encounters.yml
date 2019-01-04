@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2019-01-03
+  time: 2019-01-03 20:33:18
+  state: MyString
+  county: MyString
+  nearest_town: MyString
+  user_id: 1
+
+two:
+  date: 2019-01-03
+  time: 2019-01-03 20:33:18
+  state: MyString
+  county: MyString
+  nearest_town: MyString
+  user_id: 1
