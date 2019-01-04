@@ -29,6 +29,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Devise Authenication
 gem 'devise'
 
+gem 'omniauth', '>= 1.0.0'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

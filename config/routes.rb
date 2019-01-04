@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  get 'tags/index'
+  get 'categories/show'
+  get 'encounters/new'
+  get 'encounters/create'
+  get 'encounters/edit'
+  get 'encounters/update'
+  get 'encounters/index'
+  get 'encounters/show'
+  get 'users/show'
   devise_for :users, :path => 'accounts', :controllers  => {:omniauth_callbacks => "users/omniauth_callbacks"}
 
   root 'dashboard#index'
