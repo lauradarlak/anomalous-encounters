@@ -7,6 +7,6 @@ class User < ApplicationRecord
   has_many :encounters
   has_many :categories, through: :encounters
 
-  has_secure_password
+  
 
 end

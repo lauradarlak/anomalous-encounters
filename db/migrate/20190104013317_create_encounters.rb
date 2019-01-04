@@ -11,6 +11,7 @@ class CreateEncounters < ActiveRecord::Migration[5.2]
       t.text :description
       t.boolean :witnesses
       t.integer :user_id
+      t.integer :category_id
 
       t.timestamps
     end
