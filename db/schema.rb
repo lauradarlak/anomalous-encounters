@@ -10,13 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_04_013317) do
+ActiveRecord::Schema.define(version: 2019_01_04_014059) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.integer "encounter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "encounter_tag", id: false, force: :cascade do |t|
+    t.integer "encounter_id", null: false
+    t.integer "tag_id", null: false
   end
 
   create_table "encounters", force: :cascade do |t|
@@ -30,6 +35,12 @@ ActiveRecord::Schema.define(version: 2019_01_04_013317) do
     t.text "description"
     t.boolean "witnesses"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,0 +1,5 @@
+class CreateEncountersTagsJoinTable < ActiveRecord::Migration[5.2]
+  def change
+    create_join_table :encounter, :tag
+  end
+end
