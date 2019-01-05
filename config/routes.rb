@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root 'dashboard#index'
 
   resources :users, only: [] do
-    resources :encounters, only: [:new, :create, :edit, :update]
+    resources :encounters, only: [:new, :create, :edit, :update, :index]
   end
 
   get '/encounters', to: 'encounters#index', as: 'encounters'
