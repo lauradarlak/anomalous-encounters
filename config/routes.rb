@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   get '/tags', to: 'tags#index'
-  get '/tags/:tag', to:'encounters#index', as: 'tag'
+  get '/tags/:name', to:'tags#show', as: 'tag'
 
 
 end

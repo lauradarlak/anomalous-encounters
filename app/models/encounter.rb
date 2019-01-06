@@ -22,6 +22,7 @@ class Encounter < ApplicationRecord
     end
   end
 
+
 end
 
 

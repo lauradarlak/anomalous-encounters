@@ -34,7 +34,8 @@ class EncountersController < ApplicationController
   end
 
   def show
-
+    @tag = Tag.find_by_param(params[:name])
+    
   end
 
   def edit
