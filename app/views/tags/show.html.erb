@@ -1,1 +1,4 @@
 <h1><%= @tag.name %></h1>
+<% @tag.encounters.each do |encounter| %>
+  <p>Case ID: <%= link_to encounter.id, encounter_path(encounter) %></p>
+<% end %>

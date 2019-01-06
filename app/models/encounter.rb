@@ -5,7 +5,7 @@ class Encounter < ApplicationRecord
   has_many :tags, through: :taggings
 
   def self.tagged_with(name)
-    Tag.find_by!(name: name).posts
+    Tag.find_by_name(params[:name]).encounters
   end
 
   def self.tag_counts
