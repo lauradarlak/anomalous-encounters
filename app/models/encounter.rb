@@ -1,7 +1,7 @@
 class Encounter < ApplicationRecord
   belongs_to :user
   belongs_to :category
-  has_many :taggings
+  has_many :taggings, :dependent => :destroy
   has_many :tags, through: :taggings
 
   def self.tagged_with(name)
@@ -18,10 +18,13 @@ class Encounter < ApplicationRecord
 
   def tag_list=(names)
     self.tags = names.split(',').map do |n|
-      Tag.where(name: n.strip).first_or_create!
+      Tag.where(name: n.strip.downcase).first_or_create!
     end
   end
 
+  def self.tag_name
+    Tags.map(&:name).map { |t| t }
+  end
 
 end
 
