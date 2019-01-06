@@ -2,3 +2,7 @@
 <% @tag.encounters.each do |encounter| %>
   <p>Case ID: <%= link_to encounter.id, encounter_path(encounter) %></p>
 <% end %>
+<% Tag.tag_counts_order.each do |k,v| %>
+  <p><%= link_to k, tag_path(k.parameterize) %> <%= v %></p>
+<% end %>
+<%= Tag.tag_counts %>
