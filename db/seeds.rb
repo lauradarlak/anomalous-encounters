@@ -9,3 +9,7 @@
 Category.create(name: 'UFO')
 Category.create(name: 'Alien')
 Category.create(name: 'Sasquatch')
+
+Tag.create(name: 'probe')
+Tag.create(name: 'time')
+Tag.create(name: 'mind')

@@ -29,6 +29,14 @@
   <%= f.label  :category_id %>
   <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name, @encounter.category_id) %>
   <br>
+
+    <%= f.label :all_tags, "Tags (separated by commas)" %><br />
+    <%= f.text_field :all_tags %>
+
+  <%= f.label :tag_ids, "Tags (separated by commas)" %>
+  <%= f.collection_select(:tag_ids, Tag.all, :id, :name, {:prompt => "Please Select a Tag"}, {:multiple => true}) %>
+
+
   <%= f.submit %>
 
 <% end %>

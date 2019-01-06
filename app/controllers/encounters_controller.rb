@@ -5,7 +5,7 @@ class EncountersController < ApplicationController
   def index
     if params[:user_id] && redirect_if_not_authorized!
       @user = User.find_by(params[:user_id])
-      @encounters = @user.encounters
+      @encounters = @user.encounters.tagged_with(params[:tag])
       render action: "user_index"
     elsif params[:category_id]
       @category = Category.find_by(params[:category_id])
@@ -19,6 +19,7 @@ class EncountersController < ApplicationController
 
   def new
     @encounter = Encounter.new
+
   end
 
   def create
@@ -55,7 +56,7 @@ class EncountersController < ApplicationController
 
   def encounter_params
     params.require(:encounter).permit(:date, :time, :state, :county, :nearest_town, :conditions, :environment,
-    :description, :witnesses, :category_id)
+    :description, :witnesses, :category_id, :all_tags, :tag, { tag_ids: [] }, :tag_ids)
   end
 
   def set_encounter
