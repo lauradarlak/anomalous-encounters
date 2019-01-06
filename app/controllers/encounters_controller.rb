@@ -56,7 +56,7 @@ class EncountersController < ApplicationController
 
   def encounter_params
     params.require(:encounter).permit(:date, :time, :state, :county, :nearest_town, :conditions, :environment,
-    :description, :witnesses, :category_id, :all_tags, :tag, { tag_ids: [] }, :tag_ids)
+    :description, :witnesses, :category_id, :tag_list, :tag, { tag_ids: [] }, :tag_ids)
   end
 
   def set_encounter
