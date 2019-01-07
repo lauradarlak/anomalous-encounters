@@ -1,8 +1,4 @@
-<h1><%= @tag.name %></h1>
+<h1><%= @tag.name %><span><%= @tag.encounters.count %></span></h1>
 <% @tag.encounters.each do |encounter| %>
   <p>Case ID: <%= link_to encounter.id, encounter_path(encounter) %></p>
 <% end %>
-<% Tag.tag_counts_order.each do |k,v| %>
-  <p><%= link_to k, tag_path(k.parameterize) %> <%= v %></p>
-<% end %>
-<%= Tag.tag_counts %>

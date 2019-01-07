@@ -4,19 +4,11 @@ class Encounter < ApplicationRecord
   has_many :taggings, :dependent => :destroy
   has_many :tags, through: :taggings
 
-  scope :tag_counts, -> { joins(:taggings).group(:tag_id).count }
+  scope :recently_added_encounters, -> (limit) { order("created_at desc").limit(limit) }
 
   def self.tagged_with(name)
     Tag.find_by_name(params[:name]).encounters
   end
-
-  # def self.tag_counts
-  #   Tag.select('tags.*, count(taggings.tag_id) as count').joins(:taggings).group('taggings.tag_id')
-  # end
-
-  def self.tag_counter
-  Tag.select('tags.*, count(taggings.tag_id) as count').joins(:taggings).group('taggings.tag_id')
-end
 
   def tag_list
     tags.map(&:name).join(', ')
