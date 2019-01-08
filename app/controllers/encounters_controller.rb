@@ -14,7 +14,7 @@ class EncountersController < ApplicationController
     else
       @encouters = Encounter.all
     end
-
+    redirect_to 'user_encounters_path'
   end
 
   def new
@@ -24,10 +24,11 @@ class EncountersController < ApplicationController
 
   def create
     @encounter = current_user.encounters.build(encounter_params)
+    @user = current_user.display_name
     # @encounter.date = Date.new(params[:encounter]["date(1i)"].to_i,params[:encounter]["date(2i)"].to_i,params[:encounter]["date(3i)"].to_i)
     # @encounter.save
     if @encounter.save
-      redirect_to encounter_path(@encounter)
+      redirect_to user_encounter_path(@user, @encounter)
     else
       render :new
     end

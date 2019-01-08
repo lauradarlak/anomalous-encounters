@@ -8,13 +8,12 @@ Rails.application.routes.draw do
   #   resources :encounters, only: [:new, :create, :edit, :update, :index]
   # end
 
-  scope ':display_name' do
+  scope ':display_name', as: 'user' do
     resources :encounters
   end
 
-  get '/encounters', to: 'encounters#index', as: 'all_encounters'
-  get '/encounters/:id', to: 'encounters#show', as: 'direct_encounter'
-
+  get '/encounters', to: 'encounters#index'
+  get '/encounters/:id', to: 'encounters#show', as: 'encounter'
 
   resources :categories, only: [:show] do
     resources :encounters, only: [:index, :show]
