@@ -3,7 +3,7 @@ class EncountersController < ApplicationController
   before_action :redirect_if_not_authorized!, :except => [:show, :index]
 
   def index
-    if params[:user_id] && redirect_if_not_authorized!
+    if params[:dsplay_name] && redirect_if_not_authorized!
       @user = User.find_by(params[:user_id])
       @encounters = @user.encounters.tagged_with(params[:tag])
       render action: "user_index"

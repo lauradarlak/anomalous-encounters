@@ -4,12 +4,16 @@ Rails.application.routes.draw do
 
   root 'dashboard#index'
 
-  resources :users, only: [] do
+  # resources :user, only: [] do
+  #   resources :encounters, only: [:new, :create, :edit, :update, :index]
+  # end
+
+  scope ':display_name' do
     resources :encounters, only: [:new, :create, :edit, :update, :index]
   end
 
-  get '/encounters', to: 'encounters#index', as: 'encounters'
-  get '/encounters/:id', to: 'encounters#show', as: 'encounter'
+  get '/encounters', to: 'encounters#index'
+  # get '/encounters/:id', to: 'encounters#show', as: 'encounter'
 
 
   resources :categories, only: [:show] do

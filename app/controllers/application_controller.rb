@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
   protected
 
   def redirect_if_not_authorized!
-    if params[:user_id].to_i != current_user.id
+    user = User.find_by(display_name: params[:display_name])
+    if user.id != current_user.id
       redirect_to root_path
     end
   end
