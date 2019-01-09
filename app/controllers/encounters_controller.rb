@@ -7,8 +7,8 @@ class EncountersController < ApplicationController
       @user = User.find_by(display_name: params[:display_name])
       @encounters = @user.encounters
       # render action: "user_index"
-    elsif params[:category_id]
-      @category = Category.find_by(params[:category_id])
+    elsif params[:category_name]
+      @category = Category.find_by_downcase(params[:category_name])
       @encounters = @category.encounters
       # render action: "category_index"
     else
