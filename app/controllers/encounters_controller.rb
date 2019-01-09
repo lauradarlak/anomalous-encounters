@@ -52,6 +52,10 @@ class EncountersController < ApplicationController
   def destroy
   end
 
+  def recent_encounters
+    @encounters = Encounters.recently_added_encounters(25)
+  end
+
   private
 
   def encounter_params
