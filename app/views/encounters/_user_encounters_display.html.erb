@@ -1,8 +1,7 @@
-<h1><%= @user.display_name %></h1>
 
 <% @encounters.each do |encounter| %>
   <h2>Case ID: <%= link_to encounter.id, encounter_path(encounter) %></h2>
-  <p><%= encounter.user.display_name %></p>
   <p><%= encounter.category.name %></p>
   <p><%= encounter.description[0,350] %>...</p>
+  <small>Tags: <%= raw encounter.tags.map(&:name).map { |t| link_to t, tag_path(t.parameterize) }.join(', ')%></small>
 <% end %>

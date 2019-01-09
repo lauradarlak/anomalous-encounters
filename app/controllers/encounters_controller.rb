@@ -6,11 +6,11 @@ class EncountersController < ApplicationController
     if params[:display_name]
       @user = User.find_by(display_name: params[:display_name])
       @encounters = @user.encounters
-      render action: "user_index"
+      # render action: "user_index"
     elsif params[:category_id]
       @category = Category.find_by(params[:category_id])
       @encounters = @category.encounters
-      render action: "category_index"
+      # render action: "category_index"
     else
       @encouters = Encounter.all
     end
