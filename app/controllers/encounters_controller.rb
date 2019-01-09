@@ -3,9 +3,9 @@ class EncountersController < ApplicationController
   before_action :redirect_if_not_authorized!, :except => [:show, :index]
 
   def index
-    if params[:dsplay_name] && redirect_if_not_authorized!
-      @user = User.find_by(params[:user_id])
-      @encounters = @user.encounters.tagged_with(params[:tag])
+    if params[:display_name]
+      @user = User.find_by(display_name: params[:display_name])
+      @encounters = @user.encounters
       render action: "user_index"
     elsif params[:category_id]
       @category = Category.find_by(params[:category_id])
@@ -14,7 +14,7 @@ class EncountersController < ApplicationController
     else
       @encouters = Encounter.all
     end
-    redirect_to 'user_encounters_path'
+    # redirect_to 'user_encounters_path'
   end
 
   def new
@@ -23,12 +23,10 @@ class EncountersController < ApplicationController
   end
 
   def create
-    @encounter = current_user.encounters.build(encounter_params)
-    @user = current_user.display_name
-    # @encounter.date = Date.new(params[:encounter]["date(1i)"].to_i,params[:encounter]["date(2i)"].to_i,params[:encounter]["date(3i)"].to_i)
-    # @encounter.save
+    @user = User.find_by(display_name: params[:display_name])
+    @encounter = @user.encounters.build(encounter_params)
     if @encounter.save
-      redirect_to user_encounter_path(@user, @encounter)
+      redirect_to user_encounter_path(@user.display_name, @encounter)
     else
       render :new
     end
