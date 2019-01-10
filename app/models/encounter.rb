@@ -4,6 +4,7 @@ class Encounter < ApplicationRecord
   has_many :taggings, :dependent => :destroy
   has_many :tags, through: :taggings
 
+
   scope :recently_added_encounters, -> (limit) { order("created_at desc").limit(limit) }
 
   # def self.tagged_with(name)

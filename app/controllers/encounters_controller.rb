@@ -3,17 +3,23 @@ class EncountersController < ApplicationController
   before_action :redirect_if_not_authorized!, :except => [:show, :index]
 
   def index
-    if params[:display_name]
-      @user = User.find_by(display_name: params[:display_name])
-      @encounters = @user.encounters
-      # render action: "user_index"
-    elsif params[:category_name]
-      @category = Category.find_by_downcase(params[:category_name])
+    if params[:category_name]
+      @category = Category.ci_find(name: params[:category_name])
       @encounters = @category.encounters
-      # render action: "category_index"
     else
-      @encouters = Encounter.all
+      @encounters = Encounter.all
     end
+    # if params[:display_name]
+    #   @user = User.find_by(display_name: params[:display_name])
+    #   @encounters = @user.encounters
+    #   # render action: "user_index"
+    # elsif params[:category_name]
+    #   @category = Category.find_by_downcase(params[:category_name])
+    #   @encounters = @category.encounters
+    #   # render action: "category_index"
+    # else
+    #   @encouters = Encounter.all
+    # end
     # redirect_to 'user_encounters_path'
   end
 
@@ -24,7 +30,7 @@ class EncountersController < ApplicationController
 
   def create
     @user = User.find_by(display_name: params[:display_name])
-    @encounter = @user.encounters.build(encounter_params)
+    @encounter = @user.encounters.new(encounter_params)
     if @encounter.save
       redirect_to user_encounter_path(@user.display_name, @encounter)
     else
@@ -60,7 +66,7 @@ class EncountersController < ApplicationController
 
   def encounter_params
     params.require(:encounter).permit(:date, :time, :state, :county, :nearest_town, :conditions, :environment,
-    :description, :witnesses, :category_id, :tag_list, :tag, { tag_ids: [] }, :tag_ids)
+    :description, :witnesses, :tag_list, :category_id, :category)
   end
 
   def set_encounter
