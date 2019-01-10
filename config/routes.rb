@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get '/encounters/:id', to: 'encounters#show', as: 'encounter'
   get '/encounters/recent_encounters', to: 'encounters#recent_encounters', as: 'most_recent_encounters'
 
-  resources :categories, only: [:show], param: :name do
+  resources :categories, only: [:show], param: :slug do
     resources :encounters, only: [:index, :show]
   end
 

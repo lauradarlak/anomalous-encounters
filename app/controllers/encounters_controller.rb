@@ -3,23 +3,17 @@ class EncountersController < ApplicationController
   before_action :redirect_if_not_authorized!, :except => [:show, :index]
 
   def index
-    if params[:category_name]
-      @category = Category.ci_find(name: params[:category_name])
+    if params[:display_name]
+      @user = User.find_by(display_name: params[:display_name])
+      @encounters = @user.encounters
+      # render action: "user_index"
+    elsif params[:category_slug]
+      @category = Category.find_by(slug: params[:category_slug])
       @encounters = @category.encounters
+      # render action: "category_index"
     else
       @encounters = Encounter.all
     end
-    # if params[:display_name]
-    #   @user = User.find_by(display_name: params[:display_name])
-    #   @encounters = @user.encounters
-    #   # render action: "user_index"
-    # elsif params[:category_name]
-    #   @category = Category.find_by_downcase(params[:category_name])
-    #   @encounters = @category.encounters
-    #   # render action: "category_index"
-    # else
-    #   @encouters = Encounter.all
-    # end
     # redirect_to 'user_encounters_path'
   end
 
