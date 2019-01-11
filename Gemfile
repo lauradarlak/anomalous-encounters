@@ -28,9 +28,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 # Devise Authenication
 gem 'devise'
-gem 'omniauth'
-
 gem 'omniauth-google-oauth2'
+
 gem 'bootstrap', '~> 4.2.1'
 
 # Use ActiveStorage variant
