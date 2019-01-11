@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :users, :path => 'accounts', :controllers  => {:omniauth_callbacks => "users/omniauth_callbacks"}
 
+  match '/accounts/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
+
   root 'dashboard#index'
 
   # resources :user, only: [] do
