@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         redirect_to root_path, notice: 'Your profile was successfully updated.'
       else
-        @show_errors = true
+        render finish_signup
       end
     end
   end
@@ -22,9 +22,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      accessible = [ :display_name ] # extend with your own params
-      # accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
-      params.require(:user).permit(accessible)
+      params.require(:user).permit(:display_name)
     end
 
 end
