@@ -1,27 +1,11 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :finish_signup, :destroy]
 
   def show
   end
 
-  # PATCH/PUT /users/:id.:format
-  # def update
-  #   # authorize! :update, @user
-  #   respond_to do |format|
-  #     if @user.update(user_params)
-  #       sign_in(@user == current_user ? @user : current_user, :bypass => true)
-  #       format.html { redirect_to @user, notice: 'Your profile was successfully updated.' }
-  #       format.json { head :no_content }
-  #     else
-  #       format.html { render action: 'edit' }
-  #       format.json { render json: @user.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
   # GET/PATCH /users/:id/finish_signup
   def finish_signup
-    @user = User.find(params[:id])
     # authorize! :update, @user
     if request.patch? && params[:user] #&& params[:user][:email]
       if @user.update(user_params)
