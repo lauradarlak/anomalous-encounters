@@ -31,7 +31,7 @@ gem 'devise'
 gem 'omniauth'
 
 gem 'omniauth-google-oauth2'
-
+gem 'bootstrap', '~> 4.2.1'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
