@@ -1,5 +1,7 @@
 class TagsController < ApplicationController
   def index
+    @tags = Tag.all
+    @categories = Category.all
   end
 
   def show
@@ -8,6 +10,7 @@ class TagsController < ApplicationController
       flash[:message] = "Tag does not exist"
       redirect_to root_path
     end
-
+    @categories = Category.all
+    @tags = Tag.all
   end
 end

@@ -1,2 +1,9 @@
-<h1>Tags#index</h1>
-<p>Find me in app/views/tags/index.html.erb</p>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Encounter Tags</h5>
+      <% @tags.each do |tag| %>
+      <p class="card-text"><%= link_to tag.name, tag_path(tag.name.parameterize) %></p>
+      <% end %>
+    </div>
+  </div>

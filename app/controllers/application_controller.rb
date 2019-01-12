@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
 
   def redirect_if_not_authorized!
     user = User.find_by(display_name: params[:display_name])
-    if user.id != current_user.id
+    if !user_signed_in? || user.id != current_user.id
+      flash[:notice] = "Must be logged in to access."
       redirect_to root_path
     end
   end

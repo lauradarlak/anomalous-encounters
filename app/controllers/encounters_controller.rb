@@ -1,8 +1,10 @@
 class EncountersController < ApplicationController
   before_action :set_encounter, only: [:show, :edit, :update, :destroy]
-  before_action :redirect_if_not_authorized!, :except => [:show, :index]
+  before_action :redirect_if_not_authorized!, :except => [:show, :index, :recent_encounters]
+  before_action :set_categories, only: [:index, :show, :recent_encounters]
 
   def index
+    @tags = Tag.all
     if params[:display_name]
       @user = User.find_by(display_name: params[:display_name])
       @encounters = @user.encounters
@@ -33,7 +35,8 @@ class EncountersController < ApplicationController
   end
 
   def show
-    @tag = Tag.find_by_param(params[:name])
+    # @tag = Tag.find_by_param(params[:name])
+    @tags = Tag.all
 
   end
 
@@ -53,7 +56,9 @@ class EncountersController < ApplicationController
   end
 
   def recent_encounters
-    @encounters = Encounters.recently_added_encounters(25)
+    @encounters = Encounter.recently_added_encounters(25)
+    @tags = Tag.all
+
   end
 
   private
@@ -65,6 +70,10 @@ class EncountersController < ApplicationController
 
   def set_encounter
     @encounter = Encounter.find_by(id: params[:id])
+  end
+
+  def set_categories
+    @categories = Category.all
   end
 
 

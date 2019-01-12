@@ -1,9 +1,6 @@
 
 
-<section class="pt-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-10 offset-1">
+
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Case ID: <%= @encounter.id %>
@@ -20,14 +17,10 @@
                 <p class="card-text">Environment: <%= @encounter.environment %></p>
                 <p class="card-text">Witnesses: <%= @encounter.witnesses %></p>
                 <p class="card-text">Description of Encounter: <%= @encounter.description %></p>
-                <p class="card-text">Category: <%= link_to @encounter.category.name, category_path(@encounter.category.slug) %></p>
+                <p class="card-text">Category: <%= link_to @encounter.category.name, category_encounters_path(@encounter.category.slug) %></p>
 
             <div class="card-footer">
               <span>Tags: <%= raw @encounter.tags.map(&:name).map { |t| link_to t, tag_path(t.parameterize), :class => "badge badge-info"}.join(' ') %></span>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+        </div><!-- /.card -->

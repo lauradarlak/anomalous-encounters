@@ -20,20 +20,8 @@
     <div class="wrapper">
       <main class="main">
         <div class="container">
-          <div class="row">
-            <div class="col-md-8">
-              <%= yield %>
-            </div>
-            <div class="col-md-4">
-              <%= render "encounters/categories", locals: {categories: @categories} %>
-              <%= render template: "tags/index" %>
-            </div>
-          </div>
+            <%= yield %>
         </div>
-
-
-
-
       </main>
     </div>
   </body>
