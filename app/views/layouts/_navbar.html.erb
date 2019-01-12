@@ -14,9 +14,9 @@
         <div class="collapse navbar-collapse" id="example-navbar-primary">
           <ul class="navbar-nav ml-auto">
             <% if signed_in? %>
-              <li class="nav-link">Welcome, <%= current_user.display_name %></li>
+              <li class="nav-link text-white">Welcome, <%= current_user.display_name %></li>
             <li class="nav-item">
-              <%= link_to "My Encounters", user_encounter_path(current_user), :class => "nav-link btn btn-neutral" %>
+              <%= link_to "My Encounters", user_encounters_path(current_user.display_name), :class => "nav-link btn btn-neutral" %>
             </li>
             <li class="nav-item">
                 <%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => "nav-link" %>
