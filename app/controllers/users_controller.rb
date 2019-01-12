@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         redirect_to root_path, notice: 'Your profile was successfully updated.'
       else
-        render finish_signup
+        @show_errors = true
       end
     end
   end
