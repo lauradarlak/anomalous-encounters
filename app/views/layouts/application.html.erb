@@ -11,11 +11,17 @@
 
   <body>
     <div id="flash-messages">
-      <%- flash.each do |name, msg| -%>
-        <%= content_tag :div, msg.html_safe, :id => "flash_#{name}" %>
-      <%- end -%>
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg.html_safe, :id => "flash_#{name}", :class => "alert alert-danger" %>
+      <% end %>
     </div>
+    <div class="wrapper">
+      <main class="main">
 
-    <%= yield %>
+
+        <%= yield %>
+
+      </main>
+    </div>
   </body>
 </html>
