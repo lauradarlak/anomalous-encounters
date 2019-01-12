@@ -1,6 +1,21 @@
-<h1><%= @encounter.state %></h1>
-<p><%= @encounter.date %></p>
 
-<p><%= @encounter.user.display_name%></p>
-<p><%= @encounter.category.name %></p>
-<small>Tags: <%= raw @encounter.tags.map(&:name).map { |t| link_to t, tag_path(t.parameterize) }.join(', ') %></small>
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-8 offset-2">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Case ID: <%= @encounter.id %></h5>
+
+            <h6 class="card-title">Reported by: <%= link_to @encounter.user.display_name, user_encounter_path(@encounter.user.display_name, @encounter) %></h6>
+            <p class="card-text">Date of Encounter: <%= @encounter.date %></p>
+            <p class="card-text">State: <%= @encounter.state %></hp>
+            <p class="card-text">Category: <%= @encounter.category.name %></p>
+            <small>Tags: <%= raw @encounter.tags.map(&:name).map { |t| link_to t, tag_path(t.parameterize), :class => "label label-info"}.join(', ') %></small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
