@@ -1,4 +1,10 @@
-<h1><%= @tag.name %><span><%= @tag.encounters.count %></span></h1>
+<h3>Tag: <%= @tag.name %><span class="ml-2 badge badge-pill badge-primary"><%= @tag.encounters.count %></span></h3>
 <% @tag.encounters.each do |encounter| %>
-  <p>Case ID: <%= link_to encounter.id, encounter_path(encounter) %></p>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><%= link_to "Case ID #{encounter.id}", user_encounter_path(encounter.user.display_name, encounter) %></h5>
+    <p class="card-text">Category: <%= link_to encounter.category.name, category_encounters_path(encounter.category.slug) %></p>
+    <p class="card-text">Description: <%= encounter.description %></p>
+  </div>
+</div>
 <% end %>

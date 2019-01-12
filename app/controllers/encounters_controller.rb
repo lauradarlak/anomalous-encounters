@@ -1,7 +1,8 @@
 class EncountersController < ApplicationController
   before_action :set_encounter, only: [:show, :edit, :update, :destroy]
   before_action :redirect_if_not_authorized!, :except => [:show, :index, :recent_encounters]
-  before_action :set_categories, only: [:index, :show, :recent_encounters]
+  # before_action :set_categories, only: [:index, :show, :recent_encounters]
+  before_action :set_categories, :set_tags
 
   def index
     @tags = Tag.all
@@ -74,6 +75,10 @@ class EncountersController < ApplicationController
 
   def set_categories
     @categories = Category.all
+  end
+
+  def set_tags
+    @tags = Tag.all
   end
 
 
