@@ -7,7 +7,7 @@
   </div>
   <div class="form-group">
     <%= f.label :time %>
-    <%= f.time_select(:time, {ampm: true}) %>
+    <%= f.time_select(:time, {ampm: true}, {ignore_date: true}) %>
   </div>
   <div class="form-group">
     <%= f.label :state %>

@@ -1,7 +1,7 @@
 
 
 
-        <div class="card">
+        <div id="single-encounter" class="card">
           <div class="card-body">
             <h5 class="card-title">Case ID: <%= @encounter.id %>
               <% if user_signed_in? && @encounter.user_id == current_user.id %>
@@ -9,15 +9,16 @@
               <% end %>
             </h5>
             <h6 class="card-title">Reported by: <%= link_to @encounter.user.display_name, user_encounters_path(@encounter.user.display_name) %></h6>
-            <p class="card-text">Date of Encounter: <%= @encounter.date %></p>
-            <p class="card-text">State: <%= @encounter.state %></p>
-              <p class="card-text">County: <%= @encounter.county %></p>
-                <p class="card-text">Nearest Town: <%= @encounter.nearest_town %></p>
-                <p class="card-text">Conditions: <%= @encounter.conditions %></p>
-                <p class="card-text">Environment: <%= @encounter.environment %></p>
-                <p class="card-text">Witnesses: <%= @encounter.witnesses %></p>
-                <p class="card-text">Description of Encounter: <%= @encounter.description %></p>
-                <p class="card-text">Category: <%= link_to @encounter.category.name, category_encounters_path(@encounter.category.slug) %></p>
+            <p class="card-text"><span>Date of Encounter:</span> <%= @encounter.date.to_s(:encounter_date) %></p>
+            <p class="card-text"><span>Time of Encounter:</span> <%= @encounter.time.to_s(:encounter_time) %></p>
+            <p class="card-text"><span>State:</span> <%= @encounter.state %></p>
+            <p class="card-text"><span>County:</span> <%= @encounter.county %></p>
+            <p class="card-text"><span>Nearest Town:</span> <%= @encounter.nearest_town %></p>
+            <p class="card-text"><span>Conditions:</span> <%= @encounter.conditions %></p>
+            <p class="card-text"><span>Environment:</span> <%= @encounter.environment %></p>
+            <p class="card-text"><span>Witnesses:</span> <%= @encounter.witnesses %></p>
+            <p class="card-text"><span>Description of Encounter:</span> <%= @encounter.description %></p>
+            <p class="card-text"><span>Category:</span> <%= link_to @encounter.category.name, category_encounters_path(@encounter.category.slug) %></p>
 
             <div class="card-footer">
               <span>Tags: <%= raw @encounter.tags.map(&:name).map { |t| link_to t, tag_path(t.parameterize), :class => "badge badge-info"}.join(' ') %></span>
