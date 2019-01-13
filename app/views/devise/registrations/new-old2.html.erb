@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="col-md-4 ml-auto mr-auto">
+    <div class="card card-login card-plain">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <div class="card-header text-center">
+            <%= devise_error_messages! %>
+        </div>
+        <div class="card-body">
+          <div class="input-group no-border input-lg">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="now-ui-icons users_circle-08"></i>
+              </span>
+            </div>
+            <%= f.text_field :display_name, placeholder: "Display Name", class: "form-control" %>
+          </div>
+          <div class="input-group no-border input-lg">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="now-ui-icons text_caps-small"></i>
+              </span>
+            </div>
+            <%= f.email_field :email, placeholder: "Email", class: "form-control" %>
+          </div>
+          <div class="input-group no-border input-lg">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="now-ui-icons text_caps-small"></i>
+              </span>
+            </div>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password %>
+          </div>
+          <div class="input-group no-border input-lg">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="now-ui-icons text_caps-small"></i>
+              </span>
+            </div>
+              <%= f.password_field :password_confirmation %>
+          </div>
+        </div>
+        <div class="card-footer text-center">
+          <%= f.submit "Sign up", class: "btn btn-primary btn-round btn-lg btn-block" %>
+          <a href="#pablo" class="btn btn-primary btn-round btn-lg btn-block">Get Started</a>
+          <div class="pull-left">
+            <%= render "devise/shared/links" %>
+          </div>
+          <div class="pull-right">
+            <h6>
+              <a href="#pablo" class="link">Need Help?</a>
+            </h6>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

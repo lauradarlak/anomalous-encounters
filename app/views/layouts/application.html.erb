@@ -25,7 +25,7 @@
               <%= yield %>
             </div>
             <div class="col-md-4">
-              <%= render template: "layout/new_encounter" %>
+              <%= render 'layouts/new_encounter' %>
               <%= render "encounters/categories", locals: {categories: @categories} %>
               <%= render template: "tags/index" %>
             </div>
