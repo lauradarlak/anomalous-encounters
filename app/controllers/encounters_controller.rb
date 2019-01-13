@@ -39,6 +39,13 @@ class EncountersController < ApplicationController
   end
 
   def edit
+    user = User.find_by(display_name: params[:display_name])
+    if user.nil?
+      redirect_to root_path, alert: "User not found."
+    else
+      @encounter = Encounter.find_by(user_id: params[:display_name])
+      redirect_to root_path, alert: "You cannot edit encounters that do not belong to you." if @encounter.nil?
+    end
 
   end
 

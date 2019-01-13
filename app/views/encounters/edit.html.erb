@@ -3,7 +3,9 @@
   <h2>Edit Encounter Case ID: <%= @encounter.id %></h2>
   <%= form_for @encounter, url: user_encounter_path do |f| %>
 
-    <%= render 'form' %>
+  <%= render :partial => 'form', :locals=>{:f=>f} %>
+
+  <%= f.submit "Submit Encounter", class: "btn btn-primary btn-round btn-lg" %>
 
   <% end %>
 </div>

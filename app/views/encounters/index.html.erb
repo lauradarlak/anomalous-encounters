@@ -5,7 +5,8 @@
 
   <% else @category %>
     <h2>All <%= @category.name %> Encounters</h2>
-    
-    <%= render 'encounters_display', locals: {encounters: @encounters} %>
+
   <% end %>
+
+  <%= render 'encounters_display', locals: {encounters: @encounters} %>
 </div>
