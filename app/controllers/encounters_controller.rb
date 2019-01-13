@@ -10,14 +10,10 @@ class EncountersController < ApplicationController
       @user = User.find_by(display_name: params[:display_name])
       @encounters = @user.encounters
       # render action: "user_index"
-    elsif params[:category_slug]
+    else params[:category_slug]
       @category = Category.find_by(slug: params[:category_slug])
       @encounters = @category.encounters
-      # render action: "category_index"
-    else
-      @encounters = Encounter.all
     end
-    # redirect_to 'user_encounters_path'
   end
 
   def new

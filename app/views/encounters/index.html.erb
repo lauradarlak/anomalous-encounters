@@ -1,17 +1,11 @@
 
+<div>
+  <% if @user %>
+    <h1><%= @user.display_name %>'s Encounters</h1>
 
-  <div>
-    <% if @user %>
-      <h1><%= @user.display_name %>'s Encounters</h1>
-      <%= render 'user_encounters_display' %>
-
-    <% elsif @category %>
-      <h2>All <%= @category.name %> Encounters</h2>
-      <%= render 'category_encounters_display' %>
-
-    <% else %>
-      <h2>All Anomalous Encounters</h2>
-      <%= render 'encounters_display' %>
-    <% end %>
-
-  </div>
+  <% else @category %>
+    <h2>All <%= @category.name %> Encounters</h2>
+    
+    <%= render 'encounters_display', locals: {encounters: @encounters} %>
+  <% end %>
+</div>
