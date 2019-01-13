@@ -8,8 +8,9 @@ class User < ApplicationRecord
   has_many :encounters
   has_many :categories, through: :encounters
 
-  validates :display_name, presence: true, uniqueness: {case_sensitive: :false}, format: { with: /\A[a-zA-Z0-9_]\Z/ }
+  validates :display_name, presence: true, uniqueness: {case_sensitive: :false}, format: { without: /\s/ }
   validates :email, presence: true, uniqueness: true
+
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
