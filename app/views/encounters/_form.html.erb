@@ -1,53 +1,56 @@
 
-<div class="container">
-  <%= form_for @encounter, url: user_encounters_path do |f| %>
-  <div class="form-group">
-    <%= f.label :date %>
-    <%= f.date_select(:date, { end_year: Date.today.year, start_year: 1950 }) %>
+<% if @encounter.errors.any? %>
+  <div id="error_explanation" class="mb-4">
+    <h4 class="alert alert-danger">There were some errors:</h4>
+    <ul>
+      <% @encounter.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
   </div>
-  <div class="form-group">
-    <%= f.label :time %>
-    <%= f.time_select(:time, {ampm: true}, {ignore_date: true}) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :state %>
-    <%= f.select(:state, options_for_select(us_states), {}, {class: "form-control"})  %>
-  </div>
-  <div class="form-group">
-    <%= f.label :county %>
-    <%= f.text_field :county, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :nearest_town %>
-    <%= f.text_field :nearest_town, class: "form-control"%>
-  </div>
-  <div class="form-group">
-    <%= f.label :conditions %>
-    <%= f.text_field :conditions, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :environment %>
-    <%= f.text_field :environment, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :description %>
-    <%= f.text_area :description, class: "form-control" %>
-  </div>
-  <div>
-    <%= f.label :witnesses, class: "form-check-label" %>
-    <%= f.collection_radio_buttons(:witnesses, [[true, 'Yes'], [false, 'No']], :first, :last )%>
-  </div>
-  <div class="form-group">
-    <%= f.label  :category_id %>
-    <%= f.collection_select :category_id, Category.all, :id, :name, {}, {class: "form-control"} %>
-  </div>
-  <div class="form-group">
-    <%= f.label :tag_list, "Tags (separated by commas)" %><br />
-    <%= f.text_field :tag_list, class: "form-control" %>
-  </div>
+<% end %>
 
-    <%= f.submit "Submit", class: "btn btn-primary btn-round btn-lg" %>
-
-  <% end %>
-
+<div class="form-group">
+  <%= f.label :date %>
+  <%= f.date_select(:date, { end_year: Date.today.year, start_year: 1950 }) %>
+</div>
+<div class="form-group">
+  <%= f.label :time %>
+  <%= f.time_select(:time, {ampm: true}, {ignore_date: true}) %>
+</div>
+<div class="form-group">
+  <%= f.label :state %>
+  <%= f.select(:state, options_for_select(us_states), {}, {class: "form-control"})  %>
+</div>
+<div class="form-group">
+  <%= f.label :county %>
+  <%= f.text_field :county, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :nearest_town %>
+  <%= f.text_field :nearest_town, class: "form-control"%>
+</div>
+<div class="form-group">
+  <%= f.label :conditions %>
+  <%= f.text_field :conditions, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :environment %>
+  <%= f.text_field :environment, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :description %>
+  <%= f.text_area :description, class: "form-control" %>
+</div>
+<div>
+  <%= f.label :witnesses, class: "form-check-label" %>
+  <%= f.collection_radio_buttons(:witnesses, [[true, 'Yes'], [false, 'No']], :first, :last )%>
+</div>
+<div class="form-group">
+  <%= f.label  :category_id %>
+  <%= f.collection_select :category_id, Category.all, :id, :name, {}, {class: "form-control"} %>
+</div>
+<div class="form-group">
+  <%= f.label :tag_list, "Tags (separated by commas)" %><br />
+  <%= f.text_field :tag_list, class: "form-control" %>
 </div>

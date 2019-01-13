@@ -29,6 +29,7 @@ class EncountersController < ApplicationController
     @user = User.find_by(display_name: params[:display_name])
     @encounter = @user.encounters.new(encounter_params)
     if @encounter.save
+      flash[:notice] = "Encounter Successfully Created!"
       redirect_to user_encounter_path(@user.display_name, @encounter)
     else
       render :new
@@ -42,11 +43,12 @@ class EncountersController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
     if @encounter.update(encounter_params)
-      flash[:message] = "Encounter Successfully Updated!"
+      flash[:notice] = "Encounter Successfully Updated!"
       redirect_to encounter_path(@encounter)
     else
       render :edit

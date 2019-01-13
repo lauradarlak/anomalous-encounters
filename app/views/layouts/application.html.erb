@@ -14,7 +14,7 @@
 
     <div id="flash-messages" class="mt-3">
       <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg.html_safe, :id => "flash_#{name}", :class => "alert alert-danger" %>
+        <%= content_tag :div, msg.html_safe, :id => "flash_#{name}", :class => "alert alert-info" %>
       <% end %>
     </div>
     <div class="wrapper">
