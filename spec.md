@@ -20,8 +20,9 @@ Specs:
     - Devise and google_oauth2
 - [x] Include login (how e.g. Devise)
     - Devise and google_oauth2
-- [ ] Include logout (how e.g. Devise)
-- [ ] Include third party signup/login (how e.g. Devise/OmniAuth)
+- [x] Include logout (how e.g. Devise)
+    - Devise
+- [x] Include third party signup/login (how e.g. Devise/OmniAuth)
     - Devise and google_oauth2
 - [x] Include nested resource show or index (URL e.g. users/2/recipes)
     - /:display_name/encounters INDEX

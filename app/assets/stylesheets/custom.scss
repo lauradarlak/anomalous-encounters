@@ -11,3 +11,16 @@ a.label:hover, a.label:focus  {
 #error_explanation h2 {
   font-size: 1.2em;
 }
+
+#new_encounter label {
+  font-weight: 700;
+  margin-right: 5px;
+}
+
+#new_encounter .form-control {
+  display: inline-block;
+}
+
+#encounter_description {
+  border: #ffa5004d solid 1px;
+}
