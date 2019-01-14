@@ -9,6 +9,13 @@
 Category.create(name: 'UFO')
 Category.create(name: 'Alien')
 Category.create(name: 'Sasquatch')
+Category.create(name: 'Paranormal')
+Category.create(name: 'Altered States of Consciousness')
+Category.create(name: 'Interdimensional')
+Category.create(name: 'Out of Body')
+Category.create(name: 'Shapeshifter')
+Category.create(name: 'Fairy')
+Category.create(name: 'Unicorn')
 
 Tag.create(name: 'probe')
 Tag.create(name: 'time')
