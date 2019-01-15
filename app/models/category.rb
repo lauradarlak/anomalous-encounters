@@ -6,8 +6,6 @@ class Category < ApplicationRecord
   include Slugify
   before_create :to_slug
 
-  # scope :find_by_downcase, -> (cat_name) { where("lower(cat_name) = ?", cat_name.downcase) }
-  # scope :ci_find, -> (cat_name) { where(Category.arel_table[:name].matches('cat_name')
-
+  scope :top_categories, -> { joins(:encounters).select('categories.*, count(category_id) as "category_count"').group(:category_id).order("category_count desc").limit(5) }
 
 end
