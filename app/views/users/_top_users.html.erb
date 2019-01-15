@@ -1,0 +1,12 @@
+<div class="card">
+  <div class="card-header">
+  `  <h5 class="card-title">Category Details</h5>
+  </div>`
+  <div class="card-body">
+    <p class="card-text"><%= @category.name %></p>
+    <p class="card-text">Recorded Encounters <%= @category.size %></p>
+    <% tags.each do |tag| %>
+    <p class="card-text">Top <%= @category.name %> Tags<%= link_to tag.name, tag_path(tag) %><span class="ml-2 badge badge-pill badge-primary"><%= tag.tag_count %></span></p>
+    <% end %>
+  </div>
+</div>

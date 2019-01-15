@@ -14,7 +14,15 @@
         <div class="collapse navbar-collapse" id="example-navbar-primary">
           <ul class="navbar-nav ml-auto">
             <% if signed_in? %>
-              <li class="nav-link text-white">Welcome, <%= current_user.display_name %></li>
+            <li class="navbar-brand text-white">Welcome, <%= current_user.display_name %></li>
+            <% end %>
+            <li class="nav-item">
+              <%= link_to "Categories", categories_path, :class => "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Tags", tags_path, :class => "nav-link" %>
+            </li>
+            <% if signed_in? %>
             <li class="nav-item">
               <%= link_to "My Encounters", user_encounters_path(current_user.display_name), :class => "nav-link btn btn-neutral" %>
             </li>
@@ -23,10 +31,10 @@
             </li>
             <% else %>
             <li class="nav-item">
-              <%= link_to "Log In", new_user_session_path, :class => "nav-link btn btn-lg btn-neutral" %>
+              <%= link_to "Log In", new_user_session_path, :class => "nav-link btn btn-neutral" %>
             </li>
             <li>
-              <%= link_to "Sign Up", new_user_registration_path, :class => "nav-link btn btn-lg btn-info" %>
+              <%= link_to "Sign Up", new_user_registration_path, :class => "nav-link btn btn-info" %>
             </li>
             <% end %>
           </ul>

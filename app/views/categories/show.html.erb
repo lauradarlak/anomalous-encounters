@@ -1,2 +1,27 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<% content_for :sidebar do %>
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title mt-2">Category Details</h4>
+    <h6 class="card-subtitle mb-2 text-muted">Recorded <%= @category.name %> Encounters <%= @category.encounters.count %></h6>
+    <p class="card-text">Top <%= @category.name %> Tags</p>
+    <% @top_tags.each do |tag| %>
+    <p class="card-text"><%= link_to tag.name, tag_path(tag) %><span class="ml-2 badge badge-default"><%= tag.tag_count %></span></p>
+    <% end %>
+    <% if user_signed_in? %>
+      <%= link_to "Add Encounter", new_user_encounter_path(current_user.display_name), :class => "btn btn-primary btn-lg d-block"%>
+    <% else %>
+      <%= link_to "Add Encounter", new_user_registration_path, :class => "btn btn-primary btn-lg d-block" %>
+    <% end %>
+  </div>
+</div>
+<% end %>
+
+<% @category.encounters.each do |encounter| %>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><%= link_to "Case ID #{encounter.id}", user_encounter_path(encounter.user.display_name, encounter) %></h5>
+    <h6 class="card-title">Reported by: <%= link_to encounter.user.display_name, user_encounters_path(encounter.user.display_name) %></h6>
+    <p class="card-text">Description: <%= encounter.description[0,350] %></p>
+  </div>
+</div>
+<% end %>

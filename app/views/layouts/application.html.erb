@@ -25,9 +25,7 @@
               <%= yield %>
             </div>
             <div class="col-md-4">
-              <%= render 'layouts/new_encounter' %>
-              <%= render partial: "categories/top_counts", locals: {categories: @top_categories} %>
-              <%= render partial: "tags/top_counts", locals: {tags: @top_tags} %>
+              <%= yield :sidebar %>
             </div>
           </div>
         </div>
