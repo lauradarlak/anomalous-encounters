@@ -1,0 +1,16 @@
+
+<% content_for :sidebar do %>
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title mt-2">All <%= category.name %> Encounters</h4>
+    <h6 class="card-subtitle mb-2 text-muted">Recorded <%= category.name %> Encounters <%= category.encounters.count %></h6>
+    <p class="card-text">Definition</p>
+
+    <% if user_signed_in? %>
+      <%= link_to "Add Encounter", new_user_encounter_path(current_user.display_name), :class => "btn btn-primary btn-lg d-block"%>
+    <% else %>
+      <%= link_to "Add Encounter", new_user_registration_path, :class => "btn btn-primary btn-lg d-block" %>
+    <% end %>
+  </div>
+</div>
+<% end %>

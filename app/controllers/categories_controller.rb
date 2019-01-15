@@ -1,6 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :top_tags, :top_categories
-
+  before_action :top_tags, 
   def index
     @categories = Category.all
   end
@@ -15,7 +14,9 @@ class CategoriesController < ApplicationController
     @top_tags = Tag.top_tags
   end
 
-  def top_categories
-    @top_categories = Category.top_categories
+  def related_t
+    @tags = Category.find_by(slug: params[:slug]).related_tags
+
   end
+
 end

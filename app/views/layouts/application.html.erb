@@ -25,7 +25,11 @@
               <%= yield %>
             </div>
             <div class="col-md-4">
-              <%= yield :sidebar %>
+              <% if content_for?(:sidebar) %>
+                <%= yield(:sidebar) %>
+              <% else %>
+              <%= render 'layouts/new_encounter' %>
+              <% end %>
             </div>
           </div>
         </div>
