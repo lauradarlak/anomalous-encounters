@@ -54,6 +54,9 @@ class EncountersController < ApplicationController
   end
 
   def destroy
+    @encounter.destroy
+    flash[:notice] = "Encounter Successfully Deleted"
+    redirect_to root_path
   end
 
   def recent_encounters
