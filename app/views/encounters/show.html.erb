@@ -14,7 +14,7 @@
     <p class="card-text"><span>Nearest Town:</span> <%= @encounter.nearest_town %></p>
     <p class="card-text"><span>Conditions:</span> <%= @encounter.conditions %></p>
     <p class="card-text"><span>Environment:</span> <%= @encounter.environment %></p>
-    <p class="card-text"><span>Witnesses:</span> <%= @encounter.witnesses %></p>
+    <p class="card-text"><span>Witnesses:</span> <%= yesno(@encounter.witnesses) %></p>
     <p class="card-text"><span>Description of Encounter:</span> <%= @encounter.description %></p>
     <p class="card-text"><span>Category:</span> <%= link_to @encounter.category.name, category_encounters_path(@encounter.category.slug) %></p>
 
