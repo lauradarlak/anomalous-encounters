@@ -26,8 +26,8 @@
             </div>
             <div class="col-md-4">
               <%= render 'layouts/new_encounter' %>
-              <%= render "encounters/categories", locals: {categories: @categories} %>
-              <%= render template: "tags/index" %>
+              <%= render partial: "categories/top_counts", locals: {categories: @top_categories} %>
+              <%= render partial: "tags/top_counts", locals: {tags: @top_tags} %>
             </div>
           </div>
         </div>
