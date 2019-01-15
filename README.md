@@ -1,24 +1,23 @@
-# README
+# Anomalous Encounters
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**A public repository of extraterrestrial, supernatual, and unexplainable experiences.**
 
-Things you may want to cover:
+Built with Rails, Anomalous Encounters is a public Content Management System that allows users to record, tag, and share individual encounters
 
-* Ruby version
+## Installation/Development
+Fork and clone this repo, then run:
+```
+bundle install
+rake db:migrate
 
-* System dependencies
+rake db:seed
+```
 
-* Configuration
+To run your own local development server, run
 
-* Database creation
+```
+rails s
+```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## License
+Anomalous Encounters is released under the MIT license.
