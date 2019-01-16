@@ -1,4 +1,5 @@
 class TagsController < ApplicationController
+  before_action :top_tags, :set_categories
   def index
     @tags = Tag.all
     @categories = Category.all
@@ -12,5 +13,15 @@ class TagsController < ApplicationController
     end
     @categories = Category.all
     @tags = Tag.all
+  end
+
+  private
+
+  def set_categories
+    @categories = Category.all
+  end
+
+  def top_tags
+    @top_tags = Tag.top_tags
   end
 end

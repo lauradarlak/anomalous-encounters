@@ -11,7 +11,7 @@
     <p class="card-text">State: <%= encounter.state %></p>
     <p class="card-text">Description of Encounter: <%= encounter.description[0,350] %></p>
     <% if !@category %>
-    <p class="card-text">Category: <%= link_to encounter.category.name, category_encounters_path(encounter.category.slug) %></p>
+    <p class="card-text">Category: <%= link_to encounter.category.name, category_path(encounter.category.slug) %></p>
     <% end %>
     <div class="card-footer">
       <span>Tags: <%= raw encounter.tags.map(&:name).map { |t| link_to t, tag_path(t.parameterize), :class => "badge badge-info"}.join(' ') %></span>

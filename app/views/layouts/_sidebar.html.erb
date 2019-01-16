@@ -11,7 +11,10 @@
   <div class="card-body">
     <h5 class="card-title">Top Encounter Tags</h5>
     <% tags.each do |tag| %>
-    <p class="card-text"><%= link_to tag.name, tag_path(tag) %><span class="ml-2 badge badge-default"><%= tag.tag_count %></span></p>
+    <p class="card-text"><%= link_to tag.name, tag_path(tag.name.parameterize) %><span class="ml-2 badge badge-default"><%= tag.tag_count %></span></p>
     <% end %>
+    <hr>
+    <%= link_to 'Browse all tags', tags_path %>
   </div>
+
 </div>
