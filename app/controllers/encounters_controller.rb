@@ -1,12 +1,10 @@
 class EncountersController < ApplicationController
-  before_action :set_categories, :set_tags, :user_exists?
+  before_action :top_tags, :set_categories, :user_exists?
   before_action :set_encounter, only: [:edit, :update, :destroy]
   before_action :redirect_if_not_authorized!, :except => [:show, :index, :recent_encounters]
-  # before_action :set_categories, only: [:index, :show, :recent_encounters]
 
 
   def index
-    @tags = Tag.all
     if params[:display_name]
       @user = User.find_by(display_name: params[:display_name])
       @encounters = @user.encounters
@@ -80,9 +78,10 @@ class EncountersController < ApplicationController
     @categories = Category.all
   end
 
-  def set_tags
-    @tags = Tag.all
+  def top_tags
+    @top_tags = Tag.top_tags
   end
+
 
 
 

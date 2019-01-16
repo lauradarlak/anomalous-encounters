@@ -25,9 +25,12 @@
               <%= yield %>
             </div>
             <div class="col-md-4">
+              <% if content_for?(:sidebar) %>
+                <%= yield(:sidebar) %>
+              <% else %>
               <%= render 'layouts/new_encounter' %>
-              <%= render "encounters/categories", locals: {categories: @categories} %>
-              <%= render template: "tags/index" %>
+              <% end %>
+              <%= render partial: 'layouts/sidebar', locals: {tags: @top_tags, categories: @categories} %>
             </div>
           </div>
         </div>
