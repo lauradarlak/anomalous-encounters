@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-8 offset-2">
-        <h2>Add Display Name</h2>
+        <h2>Update Display Name</h2>
         <%= form_for(current_user, :as => 'user', :url => finish_signup_path(current_user), :html => { role: 'form'}) do |f| %>
           <% if @user.errors.any? %>
             <div id="error_explanation" class="alert alert-danger">
@@ -15,8 +15,8 @@
           <div class="form-group">
             <%= f.label :display_name %>
             <div class="controls">
-              <%= f.text_field :display_name, :autofocus => true, :value => '', class: 'form-control input-lg', placeholder: 'Example: unicorn_lady' %>
-              <small>Your display name will be public</small>
+              <%= f.text_field :display_name, class: 'form-control input-lg', placeholder: 'Example: unicorn_lady' %>
+              <p>Your display name will be public</p>
             </div>
           </div>
           <%= f.submit 'Continue', :class => 'btn btn-fill btn-info' %>

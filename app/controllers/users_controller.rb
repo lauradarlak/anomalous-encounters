@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
   include SidebarBeforeActions
   before_action :set_user
+  before_action :redirect_if_not_authorized!
 
-  # GET/PATCH /users/:id/finish_signup
+  # GET/PATCH /accounts/:id/finish_signup
   def finish_signup
-    # authorize! :update, @user
-    if request.patch? && params[:user] #&& params[:user][:email]
+    if request.patch? && params[:user]
       if @user.update(user_params)
         redirect_to root_path, notice: 'Your profile was successfully updated.'
       else
@@ -16,7 +16,12 @@ class UsersController < ApplicationController
 
   private
     def set_user
-      @user = User.find(params[:id])
+      if User.exists?(id: params[:id])
+        @user = User.find_by(params[:id])
+      else
+        flash[:notice] = "User does not exist."
+        redirect_to root_path
+      end
     end
 
     def user_params

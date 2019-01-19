@@ -9,14 +9,12 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_if_not_authorized!
-    user = User.find_by(display_name: params[:display_name])
+    user = User.find_by(display_name: params[:display_name]) || User.find(params[:id])
     if !user_signed_in? || user.id != current_user.id
       flash[:notice] = "Must be logged in to access."
       redirect_to root_path
     end
   end
-
-
 
   def after_sign_in_path_for(resource)
     if resource.display_name.nil?
