@@ -30,8 +30,6 @@ Specs:
 - [x] Include nested resource show or index (URL e.g. users/2/recipes)
     - /:display_name/encounters INDEX
     - /:display_name/encounters/:id SHOW
-    - /categories/:category_slug/encounters INDEX
-    - /categories/:category_slug/encounters/:id SHOW
 - [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
     - /:display_name/encounters/new NEW
 - [x] Include form display of validation errors (form URL e.g. /recipes/new)

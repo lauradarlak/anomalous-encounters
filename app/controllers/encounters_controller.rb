@@ -1,5 +1,6 @@
 class EncountersController < ApplicationController
-  before_action :top_tags, :set_categories, :user_exists?
+  include SidebarBeforeActions
+  before_action :user_exists?
   before_action :set_encounter, only: [:edit, :update, :destroy]
   before_action :redirect_if_not_authorized!, :except => [:show, :index, :recent_encounters]
 
@@ -73,17 +74,6 @@ class EncountersController < ApplicationController
   def set_encounter
     @encounter = Encounter.find_by(id: params[:id])
   end
-
-  def set_categories
-    @categories = Category.all
-  end
-
-  def top_tags
-    @top_tags = Tag.top_tags
-  end
-
-
-
 
 
 end

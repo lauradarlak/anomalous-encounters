@@ -7,6 +7,4 @@ class Category < ApplicationRecord
   before_create :to_slug
 
 
-
-
 end
