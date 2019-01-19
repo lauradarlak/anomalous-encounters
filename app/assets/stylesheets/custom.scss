@@ -34,4 +34,13 @@ a.label:hover, a.label:focus  {
   background-size: cover;
   background-position: bottom;
   color: white;
+  height: 247px;
+}
+
+.badge-info,
+.badge-info[href]:focus,
+.badge-info[href]:hover {
+  border-color: #246499;
+  background-color: #246499;
+  color: #FFFFFF;
 }

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   include SidebarBeforeActions
+
   before_action :set_user
   before_action :redirect_if_not_authorized!
 

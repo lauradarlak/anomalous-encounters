@@ -1,7 +1,8 @@
 
 <div class="container">
-  <h2>Edit Encounter Case ID: <%= @encounter.id %></h2>
-
+  <div class="py-3 my-3" style="background: #246499;">
+    <h2 class="display-6 text-center mb-0 text-white">Edit Encounter Case ID: <%= @encounter.id %></h2>
+  </div>
   <%= form_for @encounter, url: user_encounter_path do |f| %>
 
   <%= render :partial => 'form', :locals=>{:f=>f} %>

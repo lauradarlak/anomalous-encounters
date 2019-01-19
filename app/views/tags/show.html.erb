@@ -1,4 +1,7 @@
-<h3>Tag: <%= @tag.name %><span class="ml-2 badge badge-pill badge-primary"><%= @tag.encounters.count %></span></h3>
+
+<div class="py-3 my-3" style="background: #246499;">
+  <h2 class="display-6 text-center mb-0 text-white">Tag: <%= @tag.name %><span class="ml-2 badge badge-light"><%= @tag.encounters.count %></span></h2>
+</div>
 <% @tag.encounters.each do |encounter| %>
 <div class="card">
   <div class="card-body">

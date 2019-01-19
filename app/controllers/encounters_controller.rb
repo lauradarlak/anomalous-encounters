@@ -6,13 +6,18 @@ class EncountersController < ApplicationController
   before_action :redirect_if_not_authorized!, :except => [:show, :index, :recent_encounters]
 
 
+  # def index
+  #   if params[:display_name]
+  #     @encounters = @user.encounters
+  #   else params[:category_slug]
+  #     @category = Category.find_by(slug: params[:category_slug])
+  #     @encounters = @category.encounters
+  #   end
+  # end
+
   def index
-    if params[:display_name]
-      @encounters = @user.encounters
-    else params[:category_slug]
-      @category = Category.find_by(slug: params[:category_slug])
-      @encounters = @category.encounters
-    end
+    @encounters = @user.encounters
+    
   end
 
   def new
@@ -36,7 +41,6 @@ class EncountersController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
