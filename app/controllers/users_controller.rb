@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   before_action :set_user
   before_action :redirect_if_not_authorized!
+  layout 'authentication'
 
   # GET/PATCH /accounts/:id/finish_signup
   def finish_signup
@@ -18,7 +19,7 @@ class UsersController < ApplicationController
   private
     def set_user
       if User.exists?(id: params[:id])
-        @user = User.find_by(params[:id])
+        @user = User.find_by(id: params[:id])
       else
         flash[:notice] = "User does not exist."
         redirect_to root_path

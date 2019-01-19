@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :encounters
   has_many :categories, through: :encounters
 
-  validates :display_name, presence: true, uniqueness: {case_sensitive: :false}, format: { without: /\s/ }
+  validates :display_name, uniqueness: {case_sensitive: :false}, format: { without: /\s/ }
   validates :email, presence: true, uniqueness: true
 
 

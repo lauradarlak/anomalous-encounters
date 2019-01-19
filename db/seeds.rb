@@ -16,6 +16,8 @@ Category.create(name: 'Out of Body')
 Category.create(name: 'Shapeshifter')
 Category.create(name: 'Fairy')
 Category.create(name: 'Unicorn')
+Category.create(name: 'Gnome')
+Category.create(name: 'Other')
 
 Tag.create(name: 'probe')
 Tag.create(name: 'time')
