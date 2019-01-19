@@ -17,7 +17,6 @@ class EncountersController < ApplicationController
 
   def index
     @encounters = @user.encounters
-    
   end
 
   def new

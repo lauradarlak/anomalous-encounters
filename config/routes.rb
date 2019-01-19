@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :encounters
   end
 
-  resources :categories, only: [:index, :show], param: :slug
+  resources :categories, only: [:show], param: :slug
 
   get '/tags', to: 'tags#index'
   get '/tags/:name', to:'tags#show', as: 'tag'
