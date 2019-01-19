@@ -1,8 +1,8 @@
 class TagsController < ApplicationController
   include SidebarBeforeActions
+  before_action :set_tags
 
   def index
-    @tags = Tag.all
 
   end
 
@@ -12,6 +12,11 @@ class TagsController < ApplicationController
       flash[:message] = "Tag does not exist"
       redirect_to root_path
     end
+  end
+
+  private
+
+  def set_tags
     @tags = Tag.all
   end
 

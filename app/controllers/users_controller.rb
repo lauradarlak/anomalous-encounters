@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :finish_signup, :destroy]
-
-  def show
-  end
+  include SidebarBeforeActions
+  before_action :set_user
 
   # GET/PATCH /users/:id/finish_signup
   def finish_signup

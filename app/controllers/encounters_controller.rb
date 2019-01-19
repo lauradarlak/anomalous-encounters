@@ -1,13 +1,13 @@
 class EncountersController < ApplicationController
   include SidebarBeforeActions
   before_action :user_exists?
+  before_action :set_user_by_display_name, only: [:index, :create, :show, :update]
   before_action :set_encounter, only: [:edit, :update, :destroy]
   before_action :redirect_if_not_authorized!, :except => [:show, :index, :recent_encounters]
 
 
   def index
     if params[:display_name]
-      @user = User.find_by(display_name: params[:display_name])
       @encounters = @user.encounters
     else params[:category_slug]
       @category = Category.find_by(slug: params[:category_slug])
@@ -20,7 +20,6 @@ class EncountersController < ApplicationController
   end
 
   def create
-    @user = User.find_by(display_name: params[:display_name])
     @encounter = @user.encounters.new(encounter_params)
     if @encounter.save
       flash[:notice] = "Encounter Successfully Created!"
@@ -31,10 +30,8 @@ class EncountersController < ApplicationController
   end
 
   def show
-    user = User.find_by(display_name: params[:display_name])
-      @encounter = user.encounters.find_by(id: params[:id])
-      redirect_to root_path, alert: "Encounter unknown." if @encounter.nil?
-
+    @encounter = @user.encounters.find_by(id: params[:id])
+    redirect_to root_path, alert: "Encounter unknown." if @encounter.nil?
 
   end
 
@@ -43,10 +40,9 @@ class EncountersController < ApplicationController
   end
 
   def update
-    user = User.find_by(display_name: params[:display_name])
     if @encounter.update(encounter_params)
       flash[:notice] = "Encounter Successfully Updated!"
-      redirect_to user_encounter_path(user.display_name, @encounter)
+      redirect_to user_encounter_path(@user.display_name, @encounter)
     else
       render :edit
     end
@@ -69,6 +65,10 @@ class EncountersController < ApplicationController
   def encounter_params
     params.require(:encounter).permit(:date, :time, :state, :county, :nearest_town, :conditions, :environment,
     :description, :witnesses, :tag_list, :category_id, :category)
+  end
+
+  def set_user_by_display_name
+    @user = User.find_by(display_name: params[:display_name])
   end
 
   def set_encounter
