@@ -1,0 +1,7 @@
+<% @categories.each do |cat| %>
+  <p><%= cat.name %></p>
+  <% if !cat.users.empty? %>
+  <p>Top User: <%= User.top_categories(cat.id).display_name %></p>
+  <% end %>
+
+<% end %>

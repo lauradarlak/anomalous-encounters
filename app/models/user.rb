@@ -11,6 +11,8 @@ class User < ApplicationRecord
   validates :display_name, uniqueness: {case_sensitive: :false}, format: { without: /\s/ }
   validates :email, presence: true, uniqueness: true
 
+  scope :top_categories, -> (cat) { joins(:categories).where('category_id = ?', cat).group(:user_id).order('count(user_id) desc').first }
+
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
