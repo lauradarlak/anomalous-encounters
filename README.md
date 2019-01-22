@@ -20,6 +20,7 @@ rails s
 ```
 
 ## Screenshots
+<img src="app/assets/images/user-index.jpg" alt="drawing" width="300"/>
 ![alt text](app/assets/images/user-index.jpg)
 
 ## License
