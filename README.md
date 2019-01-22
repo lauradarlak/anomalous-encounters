@@ -27,10 +27,10 @@ rails s
 
 
 
-<div style="display: inline-block">
+<div class="d-inline">
   <img src="app/assets/images/user-index.jpg" alt="user-index.html.erb" width="400"/>
 </div>
-<div style="display: inline-block">
+<div class="d-inline">
   <img src="app/assets/images/create.jpg" alt="create.html.erb" width="400"/>
 </div>
 
