@@ -19,5 +19,8 @@ To run your own local development server, run
 rails s
 ```
 
+## Screenshots
+![alt text](anomalous-encounters/app/assets/images/user-index.jpg)
+
 ## License
 Anomalous Encounters is released under the MIT license.
