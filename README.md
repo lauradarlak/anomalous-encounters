@@ -20,8 +20,11 @@ rails s
 ```
 
 ## Screenshots
-<img src="app/assets/images/user-index.jpg" alt="drawing" width="300"/>
-![alt text](app/assets/images/user-index.jpg)
+<img src="app/assets/images/user-index.jpg" alt="user-index.html.erb" width="400"/>
+<img src="app/assets/images/index.jpg" alt="root-path" width="400"/>
+<img src="app/assets/images/create.jpg" alt="create.html.erb" width="400"/>
+<img src="app/assets/images/sign-up.jpg" alt="sign-up.html.erb" width="400"/>
+
 
 ## License
 Anomalous Encounters is released under the MIT license.
