@@ -20,6 +20,11 @@ rails s
 ```
 
 ## Screenshots
+
+[![root patj](anomalous-encounters/app/assets/images/index.jpg =300x)](anomalous-encounters/app/assets/images/sign-up.jpg =300x)
+
+
+
 <div style="display: inline-block">
   <img src="app/assets/images/index.jpg" alt="root-path" width="400"/>
 </div>
