@@ -21,10 +21,10 @@ rails s
 
 ## Screenshots
 
+<span><img class="d-inline-block" src="app/assets/images/index.jpg" alt="root-path" width="400"/></span>
 
-<img class="d-inline-block" src="app/assets/images/index.jpg" alt="root-path" width="400"/>
+<span><img class="d-inline-block" src="app/assets/images/sign-up.jpg" alt="sign-up.html.erb" width="400"/></span>
 
-<img class="d-inline-block" src="app/assets/images/sign-up.jpg" alt="sign-up.html.erb" width="400"/>
 
 
 <div style="display: inline-block">
