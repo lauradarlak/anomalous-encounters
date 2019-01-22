@@ -21,25 +21,7 @@ rails s
 
 ## Screenshots
 
-<span><img class="d-inline-block" src="app/assets/images/index.jpg" alt="root-path" width="400"/></span>
-
-<span><img class="d-inline-block" src="app/assets/images/sign-up.jpg" alt="sign-up.html.erb" width="400"/></span>
-
-
-
-<div class="d-inline">
-  <img src="app/assets/images/user-index.jpg" alt="user-index.html.erb" width="400"/>
-</div>
-<div class="d-inline">
-  <img src="app/assets/images/create.jpg" alt="create.html.erb" width="400"/>
-</div>
-
-
-
-
-
-
-
+![screenshots](anomalous-encounters/app/assets/images/screenshot.png)
 
 ## License
 Anomalous Encounters is released under the MIT license.
