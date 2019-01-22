@@ -21,16 +21,12 @@ rails s
 
 ## Screenshots
 
-[![root patj](anomalous-encounters/app/assets/images/index.jpg =300x)](anomalous-encounters/app/assets/images/sign-up.jpg =300x)
+
+<img class="d-inline-block" src="app/assets/images/index.jpg" alt="root-path" width="400"/>
+
+<img class="d-inline-block" src="app/assets/images/sign-up.jpg" alt="sign-up.html.erb" width="400"/>
 
 
-
-<div style="display: inline-block">
-  <img src="app/assets/images/index.jpg" alt="root-path" width="400"/>
-</div>
-<div style="display: inline-block">
-  <img src="app/assets/images/sign-up.jpg" alt="sign-up.html.erb" width="400"/>
-</div>
 <div style="display: inline-block">
   <img src="app/assets/images/user-index.jpg" alt="user-index.html.erb" width="400"/>
 </div>
