@@ -21,7 +21,7 @@ rails s
 
 ## Screenshots
 
-![screenshots](anomalous-encounters/app/assets/images/screenshot.png)
+![screenshots](app/assets/images/screenshot.png)
 
 ## License
 Anomalous Encounters is released under the MIT license.
