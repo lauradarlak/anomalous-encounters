@@ -56,6 +56,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Use Dotenv for environment variables
   gem 'dotenv-rails'
+  gem 'rb-readline'
 end
 
 group :test do

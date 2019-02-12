@@ -1,7 +1,10 @@
 <% @categories.each do |cat| %>
   <p><%= cat.name %></p>
   <% if !cat.users.empty? %>
-  <p>Top User: <%= User.top_categories(cat.id).display_name %></p>
+    <p>Top Users:
+      <%= User.top_categories(cat.id).map {|user| user.display_name}.join(', ')  %>
+    </p>
+
   <% end %>
 
 <% end %>
