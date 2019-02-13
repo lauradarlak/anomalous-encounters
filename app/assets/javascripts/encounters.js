@@ -5,6 +5,7 @@ class Encounter {
     this.date = obj.date;
     this.state = obj.state;
     this.description = obj.description;
+    this.short_description = obj.description.substring(0, 200) + "...";
     this.user_display_name = obj.user.display_name
     this.category_slug = obj.category.slug;
     this.category = obj.category.name;
@@ -53,17 +54,22 @@ Encounter.ready = function(){
 
 }
 
+Encounter.readyFull = function(){
+  console.log("ready full?")
+  Encounter.templateSource = $("#single-encounter-template").html()
+  Encounter.templateFull = Handlebars.compile(Encounter.templateSource)
+
+
+}
+
 
 Encounter.prototype.renderCard = function(){
   return Encounter.template(this)
 }
 
-// Encounter.listenforShowClick = function() {
-//   console.log('listening..')
-//   $('button').on('click', function() {
-//     console.log('clicked!')
-//   })
-// }
+Encounter.prototype.renderFullCard = function(){
+  return Encounter.templateFull(this)
+}
 
 function listenforShowClick() {
   console.log('listening..')
@@ -88,10 +94,13 @@ function getEncounter(val, val2) {
     dataType: 'json',
     success: function(json) {
       console.log("test: ", json)
-      var newEncounter = new Encounter(json)
-      var encounterCard = newEncounter.renderCard();
+      var newEncounter = json
+      var templateSource = $("#single-encounter-template").html()
+      var templateFull = Handlebars.compile(templateSource)
+      var compiledCard = templateFull(newEncounter)
 
-        $("section#encounters").append(encounterCard)
+        $("section#encounters").empty()
+        $("section#encounters").append(compiledCard)
     }
   })
 }
