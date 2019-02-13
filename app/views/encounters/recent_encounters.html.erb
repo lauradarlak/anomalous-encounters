@@ -7,7 +7,7 @@
 
   <div class="card" id="encounter_{{id}}">
     <div class="card-body">
-      <h5 class="card-title"><a href="{{user_display_name}}/encounters/{{id}}">Case ID: {{id}}</a></h5>
+      <a href="{{user_display_name}}/encounters/{{id}}" class="h5 card-title btn-link btn-primary px-0" data-id="{{id}}">Case ID: {{id}}</a>
       <p class="card-text">Date of Encounter: {{date}}</p>
       <p class="card-text">State: {{state}}</p>
       <p class="card-text">Description of Encounter: {{description}}</p>

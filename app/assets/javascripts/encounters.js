@@ -12,18 +12,15 @@ class Encounter {
   }
 }
 
-
-
-
-Encounter.success = function(json){
-  console.log("working?")
-  json.map(encounter => {
-    var encounter = new Encounter(json);
-
-    var encounterCard = encounter.renderCard();
-    $("section#encounters").append(encounterCard)
-  })
-}
+// Encounter.success = function(json){
+//   console.log("working?")
+//   json.map(encounter => {
+//     var encounter = new Encounter(json);
+//
+//     var encounterCard = encounter.renderCard();
+//     $("section#encounters").append(encounterCard)
+//   })
+// }
 
 function getEncounters() {
   $.ajax({
@@ -42,16 +39,12 @@ function getEncounters() {
       })
     }
   })
-  // .success(Encounter.success)
-
 }
 
 Encounter.ready = function(){
   console.log("ready?")
   Encounter.templateSource = $("#encounter-template").html()
-
   Encounter.template = Handlebars.compile(Encounter.templateSource);
-
 
 }
 
@@ -60,12 +53,17 @@ Encounter.prototype.renderCard = function(){
   return Encounter.template(this)
 }
 
+function listenforShowClick() {
+  $('a.card-title').on('click', function(e) {
+    e.preventDefault();
+    getEncounter();
+  })
+}
+
 $(function(){
   if(window.location.pathname === '/') {
     getEncounters()
     Encounter.ready()
   }
-
-
 
 })

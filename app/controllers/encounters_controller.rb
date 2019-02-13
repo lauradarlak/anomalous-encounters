@@ -39,6 +39,10 @@ class EncountersController < ApplicationController
   def show
     @encounter = @user.encounters.find_by(id: params[:id])
     redirect_to root_path, alert: "Encounter unknown." if @encounter.nil?
+    respond_to do |f|
+			f.html {render :show}
+			f.json {render json: @encounter}
+		end
 
   end
 
