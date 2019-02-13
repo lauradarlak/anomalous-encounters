@@ -3,21 +3,35 @@ class EncountersController < ApplicationController
   before_action :user_exists?
   before_action :set_user_by_display_name, only: [:index, :create, :show, :update]
   before_action :set_encounter, only: [:edit, :update, :destroy]
-  before_action :redirect_if_not_authorized!, :except => [:show, :index, :recent_encounters]
+  before_action :redirect_if_not_authorized!, :except => [:show, :index, :home]
 
-
-  # def index
-  #   if params[:display_name]
-  #     @encounters = @user.encounters
-  #   else params[:category_slug]
-  #     @category = Category.find_by(slug: params[:category_slug])
-  #     @encounters = @category.encounters
-  #   end
-  # end
 
   def index
-    @encounters = @user.encounters
+    if params[:display_name]
+      @encounters = @user.encounters
+      respond_to do |f|
+  			f.html {render :index}
+  			f.json {render json: @encounters}
+  		end
+    elsif params[:category_slug]
+      @category = Category.find_by(slug: params[:category_slug])
+      @encounters = @category.encounters
+    else
+      @encounters = Encounter.all
+      respond_to do |f|
+  			f.html {render :index}
+  			f.json {render json: @encounters}
+  		end
+    end
   end
+
+  # def index
+  #   @encounters = @user.encounters
+  #   respond_to do |f|
+	# 		f.html {render :recent_encounters}
+	# 		f.json {render json: @encounters}
+	# 	end
+  # end
 
   def new
     @encounter = Encounter.new
@@ -57,8 +71,12 @@ class EncountersController < ApplicationController
     redirect_to root_path
   end
 
-  def recent_encounters
-    @encounters = Encounter.recently_added_encounters(25)
+  def home
+    @encounters = Encounter.all
+    respond_to do |f|
+			f.html {render :recent_encounters}
+			f.json {render json: @encounters}
+		end
     @tags = Tag.all
 
   end

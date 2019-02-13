@@ -1,7 +1,28 @@
 
 
-<div class="py-3 my-3" style="background: #246499;">
-  <h2 class="display-6 text-center mb-0 text-white"><%= @user.display_name %>'s Encounters</h2>
+<!-- <div class="py-3 my-3" style="background: #246499;">
+  <h2 class="display-6 text-center mb-0 text-white"> @user.display_name %>'s Encounters</h2>
+</div> -->
+
+<section id="encounters">
+
+</section>
+
+<div class="help">
+
 </div>
 
-<%= render 'encounters_display', locals: {encounters: @encounters} %>
+<script id="encounter-template" type="text/x-handlebars-template">
+  <div class="card" id="encounter_{{id}}">
+    <div class="card-body">
+      <h5 class="card-title"><a href="/{{user.display_name}}/encounters/{{id}}">Case ID: {{id}}</a></h5>
+      <p class="card-text">Date of Encounter: {{date}}</p>
+      <p class="card-text">State: {{state}}</p>
+      <p class="card-text">Description of Encounter: {{description}}</p>
+      <p class="card-text">Category: <a href="/categories/{{category.name}}">{{category.name}}</a></p>
+      // <div class="card-footer">
+      //   <span>Tags: <a class="badge badge-info" href="/tags/howling">howling</a> <a class="badge badge-info" href="/tags/mother-sasquatch">mother sasquatch</a> <a class="badge badge-info" href="/tags/national-forest">national forest</a></span>
+      // </div>
+    </div>
+  </div>
+</script>
