@@ -24,6 +24,7 @@ class EncountersController < ApplicationController
 
   def new
     @encounter = Encounter.new
+    render :new, layout: false
   end
 
   def create

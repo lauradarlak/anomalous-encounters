@@ -4,7 +4,6 @@ class Encounter {
     this.id = obj.id;
     this.date = obj.date;
     this.state = obj.state;
-    this.description = obj.description;
     this.short_description = obj.description.substring(0, 200) + "...";
     this.user_display_name = obj.user.display_name
     this.category_slug = obj.category.slug;
@@ -12,18 +11,6 @@ class Encounter {
     this.tags = obj.tags
   }
 }
-
-
-
-// Encounter.success = function(json){
-//   console.log("working?")
-//   json.map(encounter => {
-//     var encounter = new Encounter(json);
-//
-//     var encounterCard = encounter.renderCard();
-//     $("section#encounters").append(encounterCard)
-//   })
-// }
 
 function getEncounters() {
   $.ajax({
@@ -33,13 +20,9 @@ function getEncounters() {
     success: function(json) {
       console.log("test: ", json)
       json.map(encounter => {
-
         var newEncounter = new Encounter(encounter)
-
         var encounterCard = newEncounter.renderCard();
-
         $("section#encounters").append(encounterCard)
-
       })
       listenforShowClick()
     }
@@ -54,21 +37,8 @@ Encounter.ready = function(){
 
 }
 
-Encounter.readyFull = function(){
-  console.log("ready full?")
-  Encounter.templateSource = $("#single-encounter-template").html()
-  Encounter.templateFull = Handlebars.compile(Encounter.templateSource)
-
-
-}
-
-
 Encounter.prototype.renderCard = function(){
   return Encounter.template(this)
-}
-
-Encounter.prototype.renderFullCard = function(){
-  return Encounter.templateFull(this)
 }
 
 function listenforShowClick() {
@@ -108,13 +78,25 @@ function getEncounterTemplate(data) {
     $("section#encounters").append(compiledCard)
 }
 
+const addEncounterForm = () => {
+  $('a#add-encounter').on("click", function(e) {
+    e.preventDefault()
+
+    $.ajax({
+      url: this.href,
+      method: 'GET',
+      success: function(html) {
+        console.log(html);
+      }
+    })
+  })
+}
+
 $(function(){
 
   if(window.location.pathname === '/') {
-
     Encounter.ready()
+    addEncounterForm()
   }
-
-
 
 })

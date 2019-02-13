@@ -3,7 +3,7 @@
     <h5 class="card-title">Share Your Encounter</h5>
     <p class="card-text">Anomalous Encounters is a public repository of extraterrestrial, supernatual, and unexplainable experiences. </p>
     <% if user_signed_in? %>
-      <%= link_to "Add Encounter", new_user_encounter_path(current_user.display_name), :class => "btn btn-primary btn-lg d-block"%>
+      <%= link_to "Add Encounter", new_user_encounter_path(current_user.display_name), :id => "add-encounter", :class => "btn btn-primary btn-lg d-block"%>
     <% else %>
       <%= link_to "Add Encounter", new_user_registration_path, :class => "btn btn-primary btn-lg d-block" %>
     <% end %>
