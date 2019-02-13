@@ -6,7 +6,9 @@ class Encounter {
     this.state = obj.state;
     this.description = obj.description;
     this.user_display_name = obj.user.display_name
-    this.category = obj.category_id;
+    this.category_slug = obj.category.slug;
+    this.category = obj.category.name;
+    this.tags = obj.tags
   }
 }
 
@@ -17,6 +19,7 @@ Encounter.success = function(json){
   console.log("working?")
   json.map(encounter => {
     var encounter = new Encounter(json);
+
     var encounterCard = encounter.renderCard();
     $("section#encounters").append(encounterCard)
   })

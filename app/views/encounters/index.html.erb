@@ -17,10 +17,13 @@
       <p class="card-text">Date of Encounter: {{date}}</p>
       <p class="card-text">State: {{state}}</p>
       <p class="card-text">Description of Encounter: {{description}}</p>
-      <p class="card-text">Category: <a href="/categories/{{category.name}}">{{category.name}}</a></p>
-      // <div class="card-footer">
-      //   <span>Tags: <a class="badge badge-info" href="/tags/howling">howling</a> <a class="badge badge-info" href="/tags/mother-sasquatch">mother sasquatch</a> <a class="badge badge-info" href="/tags/national-forest">national forest</a></span>
-      // </div>
+      <p class="card-text">Category: <a href="/categories/{{category_slug}}">{{category}}</a></p>
+      <div class="card-footer">
+        {{#each tags}}
+        <p>{{this.name}}</p>
+        {{/each}}
+        // <span>Tags: <a class="badge badge-info" href="/tags/howling">howling</a> <a class="badge badge-info" href="/tags/mother-sasquatch">mother sasquatch</a> <a class="badge badge-info" href="/tags/national-forest">national forest</a></span>
+      </div>
     </div>
   </div>
 </script>

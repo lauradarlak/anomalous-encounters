@@ -3,5 +3,6 @@ class EncounterSerializer < ActiveModel::Serializer
     :description, :witnesses
   belongs_to :user
   belongs_to :category
-  
+  has_many :tags
+
 end
