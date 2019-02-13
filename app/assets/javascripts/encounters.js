@@ -85,8 +85,9 @@ const addEncounterForm = () => {
     $.ajax({
       url: this.href,
       method: 'GET',
-      success: function(html) {
-        console.log(html);
+      success: function(response) {
+        $('section#encounters').empty()
+        $('section#encounters').html(response)
       }
     })
   })
