@@ -5,6 +5,7 @@ class Encounter {
     this.date = obj.date;
     this.state = obj.state;
     this.description = obj.description;
+    this.user_display_name = obj.user.display_name
     this.category = obj.category_id;
   }
 }
