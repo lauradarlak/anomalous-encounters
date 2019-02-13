@@ -88,6 +88,28 @@ const addEncounterForm = () => {
       success: function(response) {
         $('section#encounters').empty()
         $('section#encounters').html(response)
+        submitEncounterForm();
+      }
+    })
+  })
+}
+
+function submitEncounterForm() {
+
+  $("#new_encounter").on("submit", function(e) {
+    e.preventDefault()
+    console.log('submit listening..')
+    $.ajax({
+      url: this.action,
+      type: 'POST',
+      dataType: 'json',
+      data: $(this).serialize(),
+      success: function(response) {
+
+        let encounter = new Encounter(response)
+        // getEncounterTemplate(encounter)
+        var encounterCard = encounter.renderCard();
+        $("section#encounters").append(encounterCard)
       }
     })
   })

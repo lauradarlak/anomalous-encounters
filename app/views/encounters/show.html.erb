@@ -25,30 +25,3 @@
     </div>
   </div>
 </div><!-- /.card -->
-
-<script id="single-encounter-template" type="text/x-handlebars-template">
-  <div id="single-encounter" class="card" id="encounter_{{id}}">
-    <div class="card-body">
-      <h5 class="card-title">Case ID: {{id}}
-      </h5>
-      <h6 class="card-title">Reported by: <a href="/{{user_display_name}}/encounters">{{user_display_name}}</a></h6>
-      <p class="card-text"><span>Date of Encounter:</span> {{date}}</p>
-      <p class="card-text"><span>Time of Encounter:</span> {{time}}</p>
-      <p class="card-text"><span>State:</span> {{state}}</p>
-      <p class="card-text"><span>County:</span> {{county}}</p>
-      <p class="card-text"><span>Nearest Town:</span> {{nearest_town}}</p>
-      <p class="card-text"><span>Conditions:</span> {{conditions}}</p>
-      <p class="card-text"><span>Environment:</span> {{environment}}</p>
-      <p class="card-text"><span>Witnesses:</span> {{witnesses}}</p>
-      <p class="card-text"><span>Description of Encounter:</span> {{description}}</p>
-      <p class="card-text">Category: <a href="/categories/{{category_slug}}">{{category}}</a></p>
-      <p class="card-text"><span>Category:</span> <a href="/categories/sasquatch">Sasquatch</a></p>
-      <div class="card-footer">
-        Tags:
-        {{#each tags}}
-        <span><a class="badge badge-info" href="/tags/{{this.slug}}">{{this.name}}</a></span>
-        {{/each}}
-      </div>
-    </div>
-  </div>
-</script>

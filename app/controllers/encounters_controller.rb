@@ -30,8 +30,12 @@ class EncountersController < ApplicationController
   def create
     @encounter = @user.encounters.new(encounter_params)
     if @encounter.save
-      flash[:notice] = "Encounter Successfully Created!"
-      redirect_to user_encounter_path(@user.display_name, @encounter)
+      # flash[:notice] = "Encounter Successfully Created!"
+      # redirect_to user_encounter_path(@user.display_name, @encounter)
+      respond_to do |f|
+        f.html {render :show}
+        f.json {render json: @encounter}
+      end
     else
       render :new
     end
