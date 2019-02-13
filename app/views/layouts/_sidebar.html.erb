@@ -3,7 +3,7 @@
   <div class="card-body">
     <h5 class="card-title">Encounter Categories</h5>
     <% @categories.each do |cat| %>
-    <p class="card-text"><%= link_to cat.name, category_path(cat.slug) %></p>
+    <p class="card-text"><%= link_to cat.name, category_path(cat.slug), :class => "cat-link" %></p>
     <% end %>
   </div>
 </div>

@@ -7,22 +7,11 @@ class EncountersController < ApplicationController
 
 
   def index
-    if params[:display_name]
-      @encounters = @user.encounters
-      respond_to do |f|
-  			f.html {render :index}
-  			f.json {render json: @encounters}
-  		end
-    elsif params[:category_slug]
-      @category = Category.find_by(slug: params[:category_slug])
-      @encounters = @category.encounters
-    else
-      @encounters = Encounter.all
-      respond_to do |f|
-  			f.html {render :index}
-  			f.json {render json: @encounters}
-  		end
-    end
+    @encounters = @user.encounters
+    respond_to do |f|
+			f.html {render :index}
+			f.json {render json: @encounters}
+		end
   end
 
   # def index

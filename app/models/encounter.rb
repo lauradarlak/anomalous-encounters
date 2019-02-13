@@ -4,6 +4,8 @@ class Encounter < ApplicationRecord
   has_many :taggings, :dependent => :destroy
   has_many :tags, through: :taggings
 
+  before_create :set_user_index
+
   validates :category_id, presence: true
   validates :user_id, presence: true
   validates :description, presence: true
@@ -18,6 +20,10 @@ class Encounter < ApplicationRecord
     self.tags = names.split(',').map do |n|
       Tag.where(name: n.strip.downcase).first_or_create!
     end
+  end
+
+  def set_user_index
+    self.user_index = self.user.encounters.count + 1
   end
 
 end

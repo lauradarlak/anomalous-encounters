@@ -61,8 +61,11 @@ Encounter.prototype.renderCard = function(){
 }
 
 $(function(){
-getEncounters()
-Encounter.ready()
+  if(window.location.pathname === '/') {
+    getEncounters()
+    Encounter.ready()
+  }
+
 
 
 })

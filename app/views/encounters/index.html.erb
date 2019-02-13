@@ -1,11 +1,11 @@
 
 
-<!-- <div class="py-3 my-3" style="background: #246499;">
-  <h2 class="display-6 text-center mb-0 text-white"> @user.display_name %>'s Encounters</h2>
-</div> -->
+<div class="py-3 my-3" style="background: #246499;">
+  <h2 class="display-6 text-center mb-0 text-white"><%= @user.display_name %>'s Encounters</h2>
+</div>
 
 <section id="encounters">
-
+  <%= render 'encounters_display', locals: {encounters: @encounters} %>
 </section>
 
 
@@ -19,7 +19,7 @@
       <p class="card-text">Description of Encounter: {{description}}</p>
       <p class="card-text">Category: <a href="/categories/{{category_slug}}">{{category}}</a></p>
       <div class="card-footer">
-        Tags: 
+        Tags:
         {{#each tags}}
         <span><a class="badge badge-info" href="/tags/{{this.slug}}">{{this.name}}</a></span>
         {{/each}}
