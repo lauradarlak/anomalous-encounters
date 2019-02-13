@@ -28,7 +28,7 @@
     <div class="card-body">
       <h5 class="card-title">Case ID: {{id}}
       </h5>
-      <h6 class="card-title">Reported by: <a href="/{{user_display_name}}/encounters">{{user_display_name}}</a></h6>
+      <h6 class="card-title">Reported by: <a href="/{{user.display_name}}/encounters">{{user.display_name}}</a></h6>
       <p class="card-text"><span>Date of Encounter:</span> {{date}}</p>
       <p class="card-text"><span>Time of Encounter:</span> {{time}}</p>
       <p class="card-text"><span>State:</span> {{state}}</p>
@@ -38,8 +38,8 @@
       <p class="card-text"><span>Environment:</span> {{environment}}</p>
       <p class="card-text"><span>Witnesses:</span> {{witnesses}}</p>
       <p class="card-text"><span>Description of Encounter:</span> {{description}}</p>
-      <p class="card-text">Category: <a href="/categories/{{category_slug}}">{{category}}</a></p>
-      <p class="card-text"><span>Category:</span> <a href="/categories/sasquatch">Sasquatch</a></p>
+      <p class="card-text">Category: <a href="/categories/{{category.slug}}">{{category.name}}</a></p>
+      
       <div class="card-footer">
         Tags:
         {{#each tags}}

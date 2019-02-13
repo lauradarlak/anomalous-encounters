@@ -94,15 +94,18 @@ function getEncounter(val, val2) {
     dataType: 'json',
     success: function(json) {
       console.log("test: ", json)
-      var newEncounter = json
-      var templateSource = $("#single-encounter-template").html()
-      var templateFull = Handlebars.compile(templateSource)
-      var compiledCard = templateFull(newEncounter)
-
-        $("section#encounters").empty()
-        $("section#encounters").append(compiledCard)
+      getEncounterTemplate(json);
     }
   })
+}
+
+function getEncounterTemplate(data) {
+  var templateSource = $("#single-encounter-template").html()
+    var templateFull = Handlebars.compile(templateSource)
+    var compiledCard = templateFull(data)
+
+    $("section#encounters").empty()
+    $("section#encounters").append(compiledCard)
 }
 
 $(function(){
