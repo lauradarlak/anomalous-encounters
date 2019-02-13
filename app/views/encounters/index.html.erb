@@ -19,10 +19,10 @@
       <p class="card-text">Description of Encounter: {{description}}</p>
       <p class="card-text">Category: <a href="/categories/{{category_slug}}">{{category}}</a></p>
       <div class="card-footer">
+        Tags: 
         {{#each tags}}
-        <p>{{this.name}}</p>
+        <span><a class="badge badge-info" href="/tags/{{this.slug}}">{{this.name}}</a></span>
         {{/each}}
-        // <span>Tags: <a class="badge badge-info" href="/tags/howling">howling</a> <a class="badge badge-info" href="/tags/mother-sasquatch">mother sasquatch</a> <a class="badge badge-info" href="/tags/national-forest">national forest</a></span>
       </div>
     </div>
   </div>
