@@ -19,10 +19,11 @@ function getEncounters() {
     dataType: 'json',
     success: function(json) {
       console.log("test: ", json)
-      json.map(encounter => {
+      json.forEach(encounter => {
         var newEncounter = new Encounter(encounter)
         var encounterCard = newEncounter.renderCard();
-        $("section#encounters").append(encounterCard)
+        $("#encounter-" + newEncounter.id).append(encounterCard)
+        console.log("rendered!")
       })
       listenforShowClick()
     }
