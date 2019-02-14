@@ -22,7 +22,7 @@ function getEncounters() {
       json.forEach(encounter => {
         var newEncounter = new Encounter(encounter)
         var encounterCard = newEncounter.renderCard();
-        $("#encounter-" + newEncounter.id).append(encounterCard)
+        $("#details-template-" + newEncounter.id).append(encounterCard)
         console.log("rendered!")
       })
       listenforShowClick()
@@ -44,10 +44,11 @@ Encounter.prototype.renderCard = function(){
 
 function listenforShowClick() {
   console.log('listening..')
-  $('button').on('click', function() {
+  $('a.show-link').on('click', function(e) {
+    e.preventDefault()
+    var encounter_id = $(this).closest('[data-id]').data('id')
+    var encounter_user = $(this).closest('[data-user]').data('user')
 
-    var encounter_id = $(this).data("id")
-    var encounter_user = $(this).data("user")
     getEncounter(encounter_id, encounter_user)
 
   })
