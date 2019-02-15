@@ -11,6 +11,7 @@ class Encounter < ApplicationRecord
   validates :description, presence: true
 
   scope :recently_added_encounters, -> (limit) { order("created_at desc").limit(limit) }
+  default_scope { order("created_at desc") }
 
   def tag_list
     tags.map(&:name).join(', ')
