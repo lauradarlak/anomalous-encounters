@@ -3,7 +3,7 @@ class EncountersController < ApplicationController
   before_action :user_exists?
   before_action :set_user_by_display_name, only: [:index, :create, :show, :update]
   before_action :set_encounter, only: [:edit, :update, :destroy]
-  before_action :redirect_if_not_authorized!, :except => [:show, :index, :recent_encounters]
+  before_action :redirect_if_not_authorized!, :except => [:show, :index, :recent_encounters, :home]
 
 
   # def index
@@ -14,6 +14,11 @@ class EncountersController < ApplicationController
   #     @encounters = @category.encounters
   #   end
   # end
+
+  def home
+    @encounters = Encounter.all
+
+  end
 
   def index
     @encounters = @user.encounters

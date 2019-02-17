@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   match '/accounts/:id/finish-signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
-  root 'encounters#recent_encounters'
+  # root 'encounters#recent_encounters'
+  root 'encounters#home'
 
   scope ':display_name', as: 'user' do
     resources :encounters
