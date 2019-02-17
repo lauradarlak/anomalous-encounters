@@ -17,7 +17,10 @@ class EncountersController < ApplicationController
 
   def home
     @encounters = Encounter.all
-
+    respond_to do |format|
+      format.html {render :home}
+      format.json {render json: @encounters}
+    end
   end
 
   def index

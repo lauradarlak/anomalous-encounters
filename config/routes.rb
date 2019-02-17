@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   # root 'encounters#recent_encounters'
   root 'encounters#home'
 
+  get '/encounters', to: 'encounters#home'
+
   scope ':display_name', as: 'user' do
     resources :encounters
   end
