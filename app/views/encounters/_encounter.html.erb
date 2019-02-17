@@ -1,5 +1,5 @@
 
-<div class="card">
+<div class="card encounter-card" id="encounter-<%=encounter.id%>">
   <div class="card-body">
     <h5 class="card-title"><%= link_to "Case ID: #{encounter.id}", user_encounter_path(encounter.user.display_name, encounter.id), class: "show-link" %>
       <% if user_signed_in? && encounter.user_id == current_user.id %>
@@ -27,7 +27,6 @@
 </script>
 
 <script id="full-encounter-template" type="text/x-handlebars-template">
-  <h5 class="card-title">Case ID: {{id}}</h5>
   <h6 class="card-title">Reported by: <a href="/{{user_display_name}}/encounters">{{user_display_name}}</a></h6>
   <p class="card-text"><span>Date of Encounter:</span> {{date}}</p>
   <p class="card-text"><span>Time of Encounter:</span> {{time}}</p>
@@ -38,7 +37,7 @@
   <p class="card-text"><span>Environment:</span> {{environment}}</p>
   <p class="card-text"><span>Witnesses:</span> {{witnesses}}</p>
   <p class="card-text"><span>Description of Encounter:</span> {{description}}</p>
-  <p class="card-text">Category: <a href="/categories/{{category.slug}}">{{category.name}}</a></p>
+  <p class="card-text">Category: <a href="/categories/{{category_slug}}">{{category}}</a></p>
 
   <div class="card-footer">
     Tags:
