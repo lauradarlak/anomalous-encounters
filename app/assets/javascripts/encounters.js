@@ -4,6 +4,7 @@ $(function(){
     compileFullCard()
     indexEncounters()
     showEncounter()
+    addEncounterForm()
   }
 })
 
@@ -86,6 +87,22 @@ function showEncounter() {
         $("div.encounter-card").not("#encounter-" + newEncounter.id).remove()
         $("#encounter-details-" + newEncounter.id).prepend(fullEncounterRender)
         console.log("rendered!")
+      }
+    })
+  })
+}
+
+function addEncounterForm() {
+  $('a#add-encounter').on("click", function(e) {
+    e.preventDefault()
+
+    $.ajax({
+      url: this.href,
+      method: 'GET',
+      success: function(response) {
+        $('section#encounters').empty()
+        $('section#encounters').html(response)
+        // submitEncounterForm();
       }
     })
   })

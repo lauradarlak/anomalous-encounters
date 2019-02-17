@@ -25,10 +25,15 @@ class EncountersController < ApplicationController
 
   def index
     @encounters = @user.encounters
+
   end
 
   def new
     @encounter = Encounter.new
+    respond_to do |format|
+      format.html {render :new, layout: false}
+      format.json {render json: @encounter}
+    end
   end
 
   def create
