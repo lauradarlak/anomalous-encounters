@@ -1,8 +1,10 @@
 $(function(){
-  compileShortCard()
-  compileFullCard()
-  indexEncounters()
-  showEncounter()
+  if(window.location.pathname === '/') {
+    compileShortCard()
+    compileFullCard()
+    indexEncounters()
+    showEncounter()
+  }
 })
 
 class Encounter {
@@ -81,10 +83,6 @@ function showEncounter() {
         var newEncounter = new Encounter(json)
         var fullEncounterRender = newEncounter.renderFullCard();
         $("#encounter-details-" + newEncounter.id).empty();
-
-        // $("data[id='" + newEncounter.id + "']").nextAll().remove()
-        // $("#encounter-" + newEncounter.id).nextAll().remove()
-        // $("#encounter-" + newEncounter.id).prevAll().remove()
         $("div.encounter-card").not("#encounter-" + newEncounter.id).remove()
         $("#encounter-details-" + newEncounter.id).prepend(fullEncounterRender)
         console.log("rendered!")

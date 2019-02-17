@@ -4,4 +4,6 @@
   <h2 class="display-6 text-center mb-0 text-white"><%= @user.display_name %>'s Encounters</h2>
 </div>
 
-<%= render 'encounters_display', locals: {encounters: @encounters} %>
+<% @encounters.each do |encounter| %>
+  <%= render partial: 'encounters_display', locals: {encounter: encounter} %>
+<% end %>
