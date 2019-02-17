@@ -2,6 +2,7 @@ $(function(){
   compileShortCard()
   compileFullCard()
   indexEncounters()
+  showEncounter()
 })
 
 class Encounter {
@@ -59,11 +60,30 @@ function indexEncounters() {
        console.log("test: ", json)
        json.forEach(encounter => {
          var newEncounter = new Encounter(encounter)
-         var fullEncounterRender = newEncounter.renderShortCard();
+         var shortEncounterRender = newEncounter.renderShortCard();
 
-         $("#encounter-details-" + newEncounter.id).append(fullEncounterRender)
+         $("#encounter-details-" + newEncounter.id).prepend(shortEncounterRender)
          console.log("rendered!")
        })
      }
    })
+}
+
+function showEncounter() {
+  console.log('listening..')
+  $('a.show-link').on('click', function(e) {
+    e.preventDefault()
+      $.ajax({
+      url: this.href,
+      method: 'get',
+      dataType: 'json',
+      success: function(json) {
+        var newEncounter = new Encounter(json)
+        var fullEncounterRender = newEncounter.renderFullCard();
+
+        $("#encounter-details-" + newEncounter.id).prepend(fullEncounterRender)
+        console.log("rendered!")
+      }
+    })
+  })
 }
