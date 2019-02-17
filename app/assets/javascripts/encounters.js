@@ -15,3 +15,13 @@ class Encounter {
     this.tags = obj.tags
   }
 }
+
+// Encounter prototypes to render handlebars templates
+
+Encounter.prototype.renderShortCard = function(){
+  return Encounter.shortTemplate(this)
+}
+
+Encounter.prototype.renderFullCard = function(){
+  return Encounter.fullTemplate(this)
+}
