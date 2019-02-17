@@ -17,6 +17,7 @@ class EncountersController < ApplicationController
 
   def home
     @encounters = Encounter.all
+    @tags = Tag.all
     respond_to do |format|
       format.html {render :home}
       format.json {render json: @encounters}
@@ -30,10 +31,10 @@ class EncountersController < ApplicationController
 
   def new
     @encounter = Encounter.new
-    respond_to do |format|
-      format.html {render :new, layout: false}
-      format.json {render json: @encounter}
-    end
+    # respond_to do |format|
+    #   format.html {render :new, layout: false}
+    #   format.json {render json: @encounter}
+    # end
   end
 
   def create

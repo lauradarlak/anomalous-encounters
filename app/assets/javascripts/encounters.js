@@ -4,7 +4,7 @@ $(function(){
     compileFullCard()
     indexEncounters()
     showEncounter()
-    addEncounterForm()
+    // addEncounterForm()
   }
 })
 
