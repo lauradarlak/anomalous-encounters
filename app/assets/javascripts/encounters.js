@@ -1,3 +1,9 @@
+$(function(){
+  compileShortCard()
+  compileFullCard()
+  indexEncounters()
+})
+
 class Encounter {
   constructor(obj){
     this.id = obj.id;
@@ -31,13 +37,33 @@ Encounter.prototype.renderFullCard = function(){
 function compileShortCard(){
   shortCardSource = $("#brief-encounter-template").html()
   if (shortCardSource !== undefined) {
-    shortTemplate = Handlebars.compile(shortCardSource)
+    Encounter.shortTemplate = Handlebars.compile(shortCardSource)
   }
 }
 
 function compileFullCard(){
   fullCardSource = $("#full-encounter-template").html()
   if (fullCardSource !== undefined) {
-    fullTemplate = Handlebars.compile(fullCardSource)
+    Encounter.fullTemplate = Handlebars.compile(fullCardSource)
   }
+}
+
+// Get all encounters via AJAX request
+
+function indexEncounters() {
+  $.ajax({
+     url: 'http://localhost:3000/encounters',
+     method: 'get',
+     dataType: 'json',
+     success: function(json) {
+       console.log("test: ", json)
+       json.forEach(encounter => {
+         var newEncounter = new Encounter(encounter)
+         var fullEncounterRender = newEncounter.renderShortCard();
+
+         $("#encounter-details-" + newEncounter.id).append(fullEncounterRender)
+         console.log("rendered!")
+       })
+     }
+   })
 }
