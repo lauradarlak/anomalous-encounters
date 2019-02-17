@@ -25,3 +25,19 @@ Encounter.prototype.renderShortCard = function(){
 Encounter.prototype.renderFullCard = function(){
   return Encounter.fullTemplate(this)
 }
+
+// Compile Handlebars templates
+
+function compileShortCard(){
+  shortCardSource = $("#brief-encounter-template").html()
+  if (shortCardSource !== undefined) {
+    shortTemplate = Handlebars.compile(shortCardSource)
+  }
+}
+
+function compileFullCard(){
+  fullCardSource = $("#full-encounter-template").html()
+  if (fullCardSource !== undefined) {
+    fullTemplate = Handlebars.compile(fullCardSource)
+  }
+}
