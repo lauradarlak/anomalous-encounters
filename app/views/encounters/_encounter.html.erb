@@ -7,8 +7,43 @@
         <%= link_to "Edit Encounter", edit_user_encounter_path(encounter.user.display_name, encounter) %>
       <% end %>
     </h5>
-    <div class="encounter-details">
+    <div class="encounter-details" id="encounter-details-<%=encounter.id%>">
 
     </div>
   </div>
 </div><!-- /.card -->
+
+<script id="full-encounter-template" type="text/x-handlebars-template">
+  <p class="card-text">Date of Encounter: {{date}}</p>
+  <p class="card-text">State: {{state}}</p>
+  <p class="card-text">Description of Encounter: {{short_description}}</p>
+  <p class="card-text">Category: <a href="/categories/{{category_slug}}">{{category}}</a></p>
+  <div class="card-footer">
+    Tags:
+    {{#each tags}}
+    <span><a class="badge badge-info" href="/tags/{{this.slug}}">{{this.name}}</a></span>
+    {{/each}}
+  </div>
+</script>
+
+<script id="brief-encounter-template" type="text/x-handlebars-template">
+  <h5 class="card-title">Case ID: {{id}}</h5>
+  <h6 class="card-title">Reported by: <a href="/{{user_display_name}}/encounters">{{user_display_name}}</a></h6>
+  <p class="card-text"><span>Date of Encounter:</span> {{date}}</p>
+  <p class="card-text"><span>Time of Encounter:</span> {{time}}</p>
+  <p class="card-text"><span>State:</span> {{state}}</p>
+  <p class="card-text"><span>County:</span> {{county}}</p>
+  <p class="card-text"><span>Nearest Town:</span> {{nearest_town}}</p>
+  <p class="card-text"><span>Conditions:</span> {{conditions}}</p>
+  <p class="card-text"><span>Environment:</span> {{environment}}</p>
+  <p class="card-text"><span>Witnesses:</span> {{witnesses}}</p>
+  <p class="card-text"><span>Description of Encounter:</span> {{description}}</p>
+  <p class="card-text">Category: <a href="/categories/{{category.slug}}">{{category.name}}</a></p>
+
+  <div class="card-footer">
+    Tags:
+    {{#each tags}}
+    <span><a class="badge badge-info" href="/tags/{{this.slug}}">{{this.name}}</a></span>
+    {{/each}}
+  </div>
+</script>
