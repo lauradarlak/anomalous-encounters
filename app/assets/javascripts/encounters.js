@@ -1,10 +1,11 @@
 $(function(){
+  compileShortCard()
   if(window.location.pathname === '/') {
     compileShortCard()
     compileFullCard()
     indexEncounters()
     showEncounter()
-    // addEncounterForm()
+    addEncounterForm()
   }
 })
 
@@ -19,7 +20,7 @@ class Encounter {
     this.environment = obj.environment
     this.witneses = obj.witneses;
     this.short_description = obj.description.substring(0, 200) + "...";
-    this.user_display_name = obj.user.display_name
+    // this.user_display_name = obj.user.display_name
     this.category_slug = obj.category.slug;
     this.category = obj.category.name;
     this.tags = obj.tags
@@ -39,6 +40,7 @@ Encounter.prototype.renderFullCard = function(){
 // Compile Handlebars templates
 
 function compileShortCard(){
+  console.log("short card load")
   shortCardSource = $("#brief-encounter-template").html()
   if (shortCardSource !== undefined) {
     Encounter.shortTemplate = Handlebars.compile(shortCardSource)
@@ -100,9 +102,39 @@ function addEncounterForm() {
       url: this.href,
       method: 'GET',
       success: function(response) {
-        $('section#encounters').empty()
-        $('section#encounters').html(response)
-        // submitEncounterForm();
+        // $('section#encounters').empty()
+        $("div.outer-card").remove()
+        $('section#encounters').prepend(response)
+        submitEncounterForm();
+      }
+    })
+  })
+}
+
+function submitEncounterForm() {
+
+  $("#new_encounter").on("submit", function(e) {
+    e.preventDefault()
+    compileShortCard();
+
+    console.log('submit listening..')
+    $.ajax({
+      url: this.action,
+      type: 'POST',
+      dataType: 'json',
+      data: $(this).serialize(),
+      success: function(data) {
+
+        // $("#form-container").html("");
+        // var templateSource = $("#brief-encounter-template").html()
+        // var templateFull = Handlebars.compile(templateSource)
+        // var compiledCard = templateFull(data)
+        // $('div.js-add').removeClass("d-block").addClass("d-display");
+        let encounter = new Encounter(data)
+        let shortEncounterRender = encounter.renderShortCard();
+        $('section#encounters').prepend(shortEncounterRender)
+        // $("#encounter-details-" + encounter.id).prepend(shortEncounterRender)
+
       }
     })
   })

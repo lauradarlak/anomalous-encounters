@@ -8,5 +8,22 @@
 </div>
 
 <section id="encounters">
-  <%= render(@encounters) %>
+  <div class="outer-card">
+      <%= render(@encounters) %>
+  </div>
 </section>
+
+
+
+<script id="brief-encounter-template" type="text/x-handlebars-template">
+  <p class="card-text">Date of Encounter: {{date}}</p>
+  <p class="card-text">State: {{state}}</p>
+  <p class="card-text">Description of Encounter: {{short_description}}</p>
+  <p class="card-text">Category: <a href="/categories/{{category_slug}}">{{category}}</a></p>
+  <div class="card-footer">
+    Tags:
+    {{#each tags}}
+    <span><a class="badge badge-info" href="/tags/{{this.slug}}">{{this.name}}</a></span>
+    {{/each}}
+  </div>
+</script>

@@ -17,6 +17,7 @@ class EncountersController < ApplicationController
 
   def home
     @encounters = Encounter.all
+  
     @tags = Tag.all
     respond_to do |format|
       format.html {render :home}
@@ -31,17 +32,24 @@ class EncountersController < ApplicationController
 
   def new
     @encounter = Encounter.new
-    # respond_to do |format|
-    #   format.html {render :new, layout: false}
-    #   format.json {render json: @encounter}
-    # end
+    respond_to do |format|
+      format.html {render :new, layout: false}
+      format.json {render json: @encounter}
+    end
   end
 
   def create
     @encounter = @user.encounters.new(encounter_params)
     if @encounter.save
       flash[:notice] = "Encounter Successfully Created!"
-      redirect_to user_encounter_path(@user.display_name, @encounter)
+      # redirect_to user_encounter_path(@user.display_name, @encounter)
+      respond_to do |format|
+        # format.html {render :show}
+        format.html {redirect_to user_encounter_path(@user.display_name, @encounter)}
+        format.json {render json: @encounter}
+        # format.json {render :show, layout: false, status: :created, location: @encounter}
+        # format.js
+      end
     else
       render :new
     end
