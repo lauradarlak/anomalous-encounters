@@ -20,11 +20,11 @@ class Encounter {
     this.environment = obj.environment
     this.witneses = obj.witneses;
     this.description = obj.description;
-    // this.short_description = obj.description.substring(0, 200) + "...";
-    // this.user_display_name = obj.user.display_name
-    // this.category_slug = obj.category.slug;
-    // this.category = obj.category.name;
-    // this.tags = obj.tags
+    this.short_description = obj.description.substring(0, 200) + "...";
+    this.user_display_name = obj.user.display_name
+    this.category_slug = obj.category.slug;
+    this.category = obj.category.name;
+    this.tags = obj.tags
   }
 }
 
