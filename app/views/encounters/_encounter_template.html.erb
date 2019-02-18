@@ -23,7 +23,6 @@
         <span>Tags: <%= raw @encounter.tags.map(&:name).map { |t| link_to t, tag_path(t.parameterize), :class => "badge badge-info"}.join(' ') %></span>
       </div>
     </div>
-    </div>
   </div>
 </div><!-- /.card -->
 
