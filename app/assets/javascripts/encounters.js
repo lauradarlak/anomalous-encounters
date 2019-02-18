@@ -13,7 +13,6 @@ class Encounter {
   constructor(obj){
     this.id = obj.id;
     this.date = obj.date;
-    this.time = obj.time;
     this.state = obj.state;
     this.county = obj.county;
     this.nearest_town = obj.nearest_town
@@ -87,6 +86,11 @@ function showEncounter() {
         var newEncounter = new Encounter(json)
         var fullEncounterRender = newEncounter.renderFullCard();
         $("#encounter-details-" + newEncounter.id).empty();
+        $("#bannerHeading").text("Encounter Details");
+        $("a.show-link").removeAttr("href");
+
+        $("section#encounters").append("<a class=\"btn btn-primary btn-lg d-block text-uppercase\" href=\"/\">View All Encounters</a>")
+
         $("div.encounter-card").not("#encounter-" + newEncounter.id).remove()
         $("#encounter-details-" + newEncounter.id).prepend(fullEncounterRender)
         console.log("rendered!")

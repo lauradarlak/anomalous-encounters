@@ -3,8 +3,8 @@
     <h1 class="display-4 align-text-bottom text-center">Anomalous Encounters</h1>
   </div>
 </div>
-<div class="py-3 my-3" style="background: #246499;">
-  <h2 class="display-6 text-center mb-0 text-white">Reported Encounters</h2>
+<div id="banner" class="py-3 my-3" style="background: #246499;">
+  <h2 id="bannerHeading" class="display-6 text-center mb-0 text-white">Reported Encounters</h2>
 </div>
 
 <section id="encounters">
@@ -12,18 +12,3 @@
       <%= render(@encounters) %>
   </div>
 </section>
-
-
-
-<script id="brief-encounter-template" type="text/x-handlebars-template">
-  <p class="card-text">Date of Encounter: {{date}}</p>
-  <p class="card-text">State: {{state}}</p>
-  <p class="card-text">Description of Encounter: {{short_description}}</p>
-  <p class="card-text">Category: <a href="/categories/{{category_slug}}">{{category}}</a></p>
-  <div class="card-footer">
-    Tags:
-    {{#each tags}}
-    <span><a class="badge badge-info" href="/tags/{{this.slug}}">{{this.name}}</a></span>
-    {{/each}}
-  </div>
-</script>
