@@ -19,11 +19,12 @@ class Encounter {
     this.nearest_town = obj.nearest_town
     this.environment = obj.environment
     this.witneses = obj.witneses;
-    this.short_description = obj.description.substring(0, 200) + "...";
+    this.description = obj.description;
+    // this.short_description = obj.description.substring(0, 200) + "...";
     // this.user_display_name = obj.user.display_name
-    this.category_slug = obj.category.slug;
-    this.category = obj.category.name;
-    this.tags = obj.tags
+    // this.category_slug = obj.category.slug;
+    // this.category = obj.category.name;
+    // this.tags = obj.tags
   }
 }
 
@@ -121,7 +122,7 @@ function submitEncounterForm() {
     $.ajax({
       url: this.action,
       type: 'POST',
-      dataType: 'json',
+      dataType: 'script',
       data: $(this).serialize(),
       success: function(data) {
 
@@ -130,10 +131,12 @@ function submitEncounterForm() {
         // var templateFull = Handlebars.compile(templateSource)
         // var compiledCard = templateFull(data)
         // $('div.js-add').removeClass("d-block").addClass("d-display");
-        let encounter = new Encounter(data)
-        let shortEncounterRender = encounter.renderShortCard();
-        $('section#encounters').prepend(shortEncounterRender)
-        // $("#encounter-details-" + encounter.id).prepend(shortEncounterRender)
+        // let encounter = new Encounter(data)
+          debugger
+        // var fullEncounterRender = encounter.renderFullCard();
+
+        // $('section#encounters').prepend(shortEncounterRender)
+        // $("#encounter-details").html(fullEncounterRender)
 
       }
     })

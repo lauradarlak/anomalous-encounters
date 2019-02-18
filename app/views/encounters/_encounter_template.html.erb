@@ -7,13 +7,28 @@
       <% end %>
     </h5>
     <div class="encounter-details" id="encounter-details-<%=encounter.id%>">
+      <h6 class="card-title">Reported by: <%= link_to @encounter.user.display_name, user_encounters_path(@encounter.user.display_name) %></h6>
+      <p class="card-text"><span>Date of Encounter:</span> <%= @encounter.date.to_s(:encounter_date) %></p>
+      <p class="card-text"><span>Time of Encounter:</span> <%= @encounter.time.to_s(:encounter_time) %></p>
+      <p class="card-text"><span>State:</span> <%= @encounter.state %></p>
+      <p class="card-text"><span>County:</span> <%= @encounter.county %></p>
+      <p class="card-text"><span>Nearest Town:</span> <%= @encounter.nearest_town %></p>
+      <p class="card-text"><span>Conditions:</span> <%= @encounter.conditions %></p>
+      <p class="card-text"><span>Environment:</span> <%= @encounter.environment %></p>
+      <p class="card-text"><span>Witnesses:</span> <%= yesno(@encounter.witnesses) %></p>
+      <p class="card-text"><span>Description of Encounter:</span> <%= @encounter.description %></p>
+      <p class="card-text"><span>Category:</span> <%= link_to @encounter.category.name, category_path(@encounter.category.slug) %></p>
 
+      <div class="card-footer">
+        <span>Tags: <%= raw @encounter.tags.map(&:name).map { |t| link_to t, tag_path(t.parameterize), :class => "badge badge-info"}.join(' ') %></span>
+      </div>
+    </div>
     </div>
   </div>
 </div><!-- /.card -->
 
 <script id="full-encounter-template" type="text/x-handlebars-template">
-  <h6 class="card-title">Reported by: <a href="/{{user_display_name}}/encounters">{{user.display_name}}</a></h6>
+  <h6 class="card-title">Reported by: <a href="/{{user_display_name}}/encounters">{{user_display_name}}</a></h6>
   <p class="card-text"><span>Date of Encounter:</span> {{date}}</p>
   <p class="card-text"><span>Time of Encounter:</span> {{time}}</p>
   <p class="card-text"><span>State:</span> {{state}}</p>

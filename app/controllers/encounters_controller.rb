@@ -17,7 +17,7 @@ class EncountersController < ApplicationController
 
   def home
     @encounters = Encounter.all
-  
+
     @tags = Tag.all
     respond_to do |format|
       format.html {render :home}
@@ -47,8 +47,9 @@ class EncountersController < ApplicationController
         # format.html {render :show}
         format.html {redirect_to user_encounter_path(@user.display_name, @encounter)}
         format.json {render json: @encounter}
-        # format.json {render :show, layout: false, status: :created, location: @encounter}
-        # format.js
+        # format.json { head :no_content}
+        # format.json {render 'create.js', layout: false, status: :created, location: @encounter}
+        format.js
       end
     else
       render :new
