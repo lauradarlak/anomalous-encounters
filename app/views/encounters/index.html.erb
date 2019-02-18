@@ -4,6 +4,11 @@
   <h2 class="display-6 text-center mb-0 text-white"><%= @user.display_name %>'s Encounters</h2>
 </div>
 
-<% @encounters.each do |encounter| %>
-  <%= render partial: 'encounters_display', locals: {encounter: encounter} %>
-<% end %>
+
+<section id="encounters">
+  <div class="outer-card">
+    <% @encounters.each do |encounter| %>
+      <%= render partial: 'encounters_display', locals: {encounter: encounter} %>
+    <% end %>
+  </div>
+</section>

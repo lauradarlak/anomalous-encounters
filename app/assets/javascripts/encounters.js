@@ -1,12 +1,13 @@
 $(function(){
-  compileShortCard()
+
+  addEncounterForm()
   if(window.location.pathname === '/') {
     compileShortCard()
     compileFullCard()
     indexEncounters()
     showEncounter()
-    addEncounterForm()
   }
+
 })
 
 class Encounter {
@@ -107,8 +108,8 @@ function addEncounterForm() {
       url: this.href,
       method: 'GET',
       success: function(response) {
-        // $('section#encounters').empty()
         $("div.outer-card").remove()
+        $("#bannerHeading").text("Add a new encounter");
         $('section#encounters').prepend(response)
         submitEncounterForm();
       }
@@ -129,18 +130,10 @@ function submitEncounterForm() {
       dataType: 'script',
       data: $(this).serialize(),
       success: function(data) {
+        console.log("submitted encounter!")
+        $("section#encounters").append("<a class=\"btn btn-primary btn-lg d-block text-uppercase\" href=\"/\">View All Encounters</a>")
+        $("a.show-link").removeAttr("href");
 
-        // $("#form-container").html("");
-        // var templateSource = $("#brief-encounter-template").html()
-        // var templateFull = Handlebars.compile(templateSource)
-        // var compiledCard = templateFull(data)
-        // $('div.js-add').removeClass("d-block").addClass("d-display");
-        // let encounter = new Encounter(data)
-          debugger
-        // var fullEncounterRender = encounter.renderFullCard();
-
-        // $('section#encounters').prepend(shortEncounterRender)
-        // $("#encounter-details").html(fullEncounterRender)
 
       }
     })

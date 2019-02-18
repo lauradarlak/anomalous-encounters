@@ -1,6 +1,6 @@
 
 <div class="container" id="form-container">
-  <h2>Add a new encounter</h2>
+
   <%= form_for @encounter, url: user_encounters_path do |f| %>
 
     <%= render :partial => 'form', :locals=>{:f=>f} %>

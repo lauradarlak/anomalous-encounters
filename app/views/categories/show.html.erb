@@ -1,12 +1,17 @@
 
 <%= render partial: 'sidebar_show', locals: {category: @category} %>
 
-<% @category.encounters.each do |encounter| %>
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title"><%= link_to "Case ID #{encounter.id}", user_encounter_path(encounter.user.display_name, encounter) %></h5>
-    <h6 class="card-title">Reported by: <%= link_to encounter.user.display_name, user_encounters_path(encounter.user.display_name) %></h6>
-    <p class="card-text">Description: <%= encounter.description[0,350] %></p>
+
+<section id="encounters">
+  <div class="outer-card">
+    <% @category.encounters.each do |encounter| %>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to "Case ID #{encounter.id}", user_encounter_path(encounter.user.display_name, encounter) %></h5>
+        <h6 class="card-title">Reported by: <%= link_to encounter.user.display_name, user_encounters_path(encounter.user.display_name) %></h6>
+        <p class="card-text">Description: <%= encounter.description[0,350] %></p>
+      </div>
+    </div>
+    <% end %>
   </div>
-</div>
-<% end %>
+</section>
