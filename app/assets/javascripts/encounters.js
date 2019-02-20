@@ -1,12 +1,12 @@
 $(function(){
-
+  compileShortCard()
+  compileFullCard()
+  indexEncounters()
+  showEncounter()
   addEncounterForm()
-  if(window.location.pathname === '/') {
-    compileShortCard()
-    compileFullCard()
-    indexEncounters()
-    showEncounter()
-  }
+  // if(window.location.pathname === '/') {
+  //
+  // }
 
 })
 
@@ -63,7 +63,6 @@ function indexEncounters() {
      method: 'get',
      dataType: 'json',
      success: function(json) {
-       console.log("test: ", json)
        json.forEach(encounter => {
          var newEncounter = new Encounter(encounter)
          var shortEncounterRender = newEncounter.renderShortCard();
@@ -121,7 +120,6 @@ function submitEncounterForm() {
 
   $("#new_encounter").on("submit", function(e) {
     e.preventDefault()
-    compileShortCard();
 
     console.log('submit listening..')
     $.ajax({
@@ -131,6 +129,7 @@ function submitEncounterForm() {
       data: $(this).serialize(),
       success: function(data) {
         console.log("submitted encounter!")
+        debugger
         $("section#encounters").append("<a class=\"btn btn-primary btn-lg d-block text-uppercase\" href=\"/\">View All Encounters</a>")
         $("a.show-link").removeAttr("href");
 
