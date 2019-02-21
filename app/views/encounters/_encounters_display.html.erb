@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card-body">
-    <h5 class="card-title"><%= link_to "Case ID: #{encounter.id}", user_encounter_path(encounter.user.display_name, encounter.id) %>
+    <h5 class="card-title"><%= link_to "Case ID: #{encounter.id}", user_encounter_path(encounter.user.display_name, encounter.id), :class => "show-link" %>
       <% if user_signed_in? && encounter.user_id == current_user.id %>
         <span class="pull-right"><%= link_to 'Delete Encounter', user_encounter_path(encounter.user.display_name, encounter), method: :delete %></span>|
         <%= link_to "Edit Encounter", edit_user_encounter_path(encounter.user.display_name, encounter) %>

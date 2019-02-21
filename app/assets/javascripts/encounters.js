@@ -89,7 +89,7 @@ function showEncounter() {
         $("#bannerHeading").text("Encounter Details");
         $("a.show-link").removeAttr("href");
 
-        $("section#encounters").append("<a class=\"btn btn-primary btn-lg d-block text-uppercase\" href=\"/\">View All Encounters</a>")
+        $("section#encounters").append("<a id=\"index-link\" class=\"btn btn-primary btn-lg d-block text-uppercase\" href=\"/\">View All Encounters</a>")
 
         $("div.encounter-card").not("#encounter-" + newEncounter.id).remove()
         $("#encounter-details-" + newEncounter.id).prepend(fullEncounterRender)
@@ -108,7 +108,8 @@ function addEncounterForm() {
       method: 'GET',
       success: function(response) {
         $("div.outer-card").remove()
-        $("#bannerHeading").text("Add a new encounter");
+        $("a#index-link").remove()
+        $("h2#bannerHeading").text("Add a new encounter");
         $('section#encounters').prepend(response)
         submitEncounterForm();
       }
@@ -129,7 +130,7 @@ function submitEncounterForm() {
       data: $(this).serialize(),
       success: function(data) {
         console.log("submitted encounter!")
-        debugger
+
         $("section#encounters").append("<a class=\"btn btn-primary btn-lg d-block text-uppercase\" href=\"/\">View All Encounters</a>")
         $("a.show-link").removeAttr("href");
 

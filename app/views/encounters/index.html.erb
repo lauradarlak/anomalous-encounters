@@ -1,14 +1,14 @@
 
 
 <div class="py-3 my-3" style="background: #246499;">
-  <h2 class="display-6 text-center mb-0 text-white"><%= @user.display_name %>'s Encounters</h2>
+  <h2 id="bannerHeading" class="display-6 text-center mb-0 text-white"><%= @user.display_name %>'s Encounters</h2>
 </div>
 
 
 <section id="encounters">
   <div class="outer-card">
     <% @encounters.each do |encounter| %>
-      <%= render partial: 'encounters_display', locals: {encounter: encounter} %>
+      <%= render partial: 'encounter', locals: {encounter: encounter} %>
     <% end %>
   </div>
 </section>
