@@ -27,7 +27,10 @@ class EncountersController < ApplicationController
 
   def index
     @encounters = @user.encounters
-
+    respond_to do |format|
+      format.html {render :index}
+      format.json {render json: @encounters}
+    end
   end
 
   def new
@@ -41,14 +44,9 @@ class EncountersController < ApplicationController
   def create
     @encounter = @user.encounters.new(encounter_params)
     if @encounter.save
-      flash[:notice] = "Encounter Successfully Created!"
-      # redirect_to user_encounter_path(@user.display_name, @encounter)
+
       respond_to do |format|
-        # format.html {render :show}
         format.html {redirect_to user_encounter_path(@user.display_name, @encounter)}
-        format.json {render json: @encounter}
-        # format.json { head :no_content}
-        # format.json {render 'create.js', layout: false, status: :created, location: @encounter}
         format.js
       end
     else
@@ -79,14 +77,12 @@ class EncountersController < ApplicationController
 
   def destroy
     @encounter.destroy
-    flash[:notice] = "Encounter Successfully Deleted"
     redirect_to root_path
   end
 
   def recent_encounters
     @encounters = Encounter.recently_added_encounters(25)
     @tags = Tag.all
-
   end
 
   private
