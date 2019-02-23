@@ -65,7 +65,6 @@ const indexEncounters = () => {
          let shortEncounterRender = newEncounter.renderShortCard();
 
          $("#encounter-details-" + newEncounter.id).prepend(shortEncounterRender)
-         console.log("rendered!")
        })
      }
    })
@@ -90,7 +89,6 @@ const showEncounter = () => {
 
         $("div.encounter-card").not("#encounter-" + newEncounter.id).remove()
         $("#encounter-details-" + newEncounter.id).prepend(fullEncounterRender)
-        console.log("rendered!")
       }
     })
   })
@@ -115,11 +113,9 @@ const addEncounterForm = () => {
 }
 
 const submitEncounterForm = () => {
-
   $("#new_encounter").on("submit", function(e) {
     e.preventDefault()
 
-    console.log('submit listening..')
     $.ajax({
       url: this.action,
       type: 'POST',
@@ -127,10 +123,8 @@ const submitEncounterForm = () => {
       data: $(this).serialize(),
       success: function(data) {
         console.log("submitted encounter!")
-
         $("section#encounters").append("<a class=\"btn btn-primary btn-lg d-block text-uppercase\" href=\"/\">View All Encounters</a>")
         $("a.show-link").removeAttr("href");
-
       }
     })
   })
