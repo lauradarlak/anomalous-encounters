@@ -4,9 +4,6 @@ $(function(){
   indexEncounters()
   showEncounter()
   addEncounterForm()
-  // if(window.location.pathname === '/') {
-  //
-  // }
 
 })
 
@@ -57,15 +54,15 @@ function compileFullCard(){
 
 // Get all encounters via AJAX request
 
-function indexEncounters() {
+const indexEncounters = () => {
   $.ajax({
      url: 'http://localhost:3000/encounters',
      method: 'get',
      dataType: 'json',
      success: function(json) {
        json.forEach(encounter => {
-         var newEncounter = new Encounter(encounter)
-         var shortEncounterRender = newEncounter.renderShortCard();
+         let newEncounter = new Encounter(encounter)
+         let shortEncounterRender = newEncounter.renderShortCard();
 
          $("#encounter-details-" + newEncounter.id).prepend(shortEncounterRender)
          console.log("rendered!")
@@ -74,7 +71,7 @@ function indexEncounters() {
    })
 }
 
-function showEncounter() {
+const showEncounter = () => {
   console.log('listening..')
   $('a.show-link').on('click', function(e) {
     e.preventDefault()
@@ -83,8 +80,8 @@ function showEncounter() {
       method: 'get',
       dataType: 'json',
       success: function(json) {
-        var newEncounter = new Encounter(json)
-        var fullEncounterRender = newEncounter.renderFullCard();
+        let newEncounter = new Encounter(json)
+        let fullEncounterRender = newEncounter.renderFullCard();
         $("#encounter-details-" + newEncounter.id).empty();
         $("#bannerHeading").text("Encounter Details");
         $("a.show-link").removeAttr("href");
@@ -99,7 +96,7 @@ function showEncounter() {
   })
 }
 
-function addEncounterForm() {
+const addEncounterForm = () => {
   $('a#add-encounter').on("click", function(e) {
     e.preventDefault()
 
@@ -117,7 +114,7 @@ function addEncounterForm() {
   })
 }
 
-function submitEncounterForm() {
+const submitEncounterForm = () => {
 
   $("#new_encounter").on("submit", function(e) {
     e.preventDefault()
@@ -133,7 +130,6 @@ function submitEncounterForm() {
 
         $("section#encounters").append("<a class=\"btn btn-primary btn-lg d-block text-uppercase\" href=\"/\">View All Encounters</a>")
         $("a.show-link").removeAttr("href");
-
 
       }
     })

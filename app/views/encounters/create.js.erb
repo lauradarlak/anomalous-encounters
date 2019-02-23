@@ -1,4 +1,4 @@
-$("section#encounters").html("<%= escape_javascript(render('encounters/encounter_template', :encounter => @encounter)) %>");
+$("section#encounters").html("<%= escape_javascript(render('encounters/encounter_card', :encounter => @encounter)) %>");
 
 
 console.log("create js")
